@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Graphs - AlgoViz</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Material Icons and Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header class="header">
+    <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+  </header>
+
+  <main>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container-fluid">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Graphs</li>
+        </ol>
+        <h2>Graph algorithms</h2>
+      </div>
+    </section>
+
+    <!-- ======= Overview Section ======= -->
+    <section id="overview" class="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Overview</h2>
+          <p>
+            A graph is a structure amounting to a set of objects in which
+            some pairs of the objects are in some sense "related".
+            <br /><br />
+            They consist of a fixed number of vertices (or nodes), which
+            represent the data points and edges, which show the relation
+            between vertices. These edges can be directed or undirected.
+            <br /><br />For example, if the vertices represent people at a
+            party, and there is an edge between two people if they shake
+            hands, then this graph is undirected because any person A can
+            shake hands with a person B only if B also shakes hands with A.
+            In contrast, if any edge from a person A to a person B
+            corresponds to A owes money to B, then this graph is directed,
+            because owing money is not necessarily reciprocated. The former
+            type of graph is called an undirected graph while the latter
+            type of graph is called a directed graph. <br /><br />Typically,
+            a graph is depicted in diagrammatic form as a set of dots or
+            circles for the vertices, joined by lines or curves for the
+            edges.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Search Section ======= -->
+    <section id="search-section" class="search">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Search</h2>
+        </div>
+
+        <div class="search-container">
+          <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Search Results Section ======= -->
+    <section id="search-results">
+      <div class="container">
+        <div id="results"></div>
+      </div>
+    </section>
+
+    <!-- ======= Graph Traversal Section ======= -->
+    <section id="graph-traversal" class="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Graph Traversal</h2>
+          <p>
+            A graph traversal algorithm visits every vertex it can reach
+            from its starting point, effectively traversing the entire graph
+            if there are no disconnected vertices.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div id="breadth-first-search" class="category-item">
+            <a href="bfs.html">
+              <h4>Breadth-first search</h4>
+              <p>
+                Breadth-first search starts at the root node (or any
+                specified node) and explores all of the neighbor nodes at
+                the present depth prior to moving on to the nodes at the
+                next depth level. <br /><br />
+                <b>Time Complexity:</b><i>O(|V|+|E|)</i><br />
+                <b>Space Complexity:</b><i>O(|V|)</i>
+              </p>
+            </a>
+          </div>
+
+          <div id="depth-first-search" class="category-item">
+            <a href="dfs.html">
+              <h4>Depth-first search</h4>
+              <p>
+                Depth-first search starts at the root node (or any
+                specified node) and explores the node branch as far as
+                possible before being forced to backtrack and expand other
+                nodes. <br /><br />
+                <b>Time Complexity:</b><i>O(|V|+|E|)</i><br />
+                <b>Space Complexity:</b><i>O(|V|)</i>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ======= MST Section ======= -->
+    <section id="mst" class="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Minimum Spanning Tree</h2>
+          <p>
+            A minimum spanning tree (MST) is a subset of the edges of a
+            connected, edge-weighted undirected graph that connects all the
+            vertices together, without any cycles and with the minimum
+            possible total edge weight.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div id="prim's algorithm" class="category-item">
+            <a href="prims.html">
+              <h4>Prim's algorithm</h4>
+              <p>
+                Prim's algorithm operates by building the MST one vertex
+                at a time, from an arbitrary starting vertex, at each step
+                adding the cheapest possible connection from the tree to
+                another vertex. <br /><br />
+                <b>Time Complexity:</b><br />
+                <b>adjacency matrix:</b><i>O(|V|²)</i><br />
+                <b>binary heap & adjacency list:</b>
+                <i>O(|E|log|V|)</i><br />
+                <b>fibonacci heap & adjacency list:</b>
+                <i>O(|E|+|V|log|V|)</i>
+              </p>
+            </a>
+          </div>
+
+          <div id="kruskal's algorithm" class="category-item">
+            <a href="kruskals.html">
+              <h4>Kruskal's algorithm</h4>
+              <p>
+                Kruskal's algorithm works by stepping through all edges
+                and adding the next lowest-weight edge that will not form
+                a cycle to the MST. <br /><br />
+                <b>Time Complexity:</b><i>O(|E|+|V|log|V|)</i>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ======= SCC Section ======= -->
+    <section id="scc" class="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Strongly Connected Components</h2>
+          <p>
+            A strongly connected component is a subset of vertices such that
+            any two vertices of this subset are reachable from each other.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div id="kosaraju's algorithm" class="category-item">
+            <a href="kosarajus.html">
+              <h4>Kosaraju's algorithm</h4>
+              <p>
+                Kosaraju's algorithm is a DFS-based algorithm used to find
+                Strongly Connected Components (SCC) in a graph. It is
+                based on the idea that if one is able to reach a vertex v
+                starting from vertex u, then one should be able to reach
+                vertex u starting from vertex v, and if such is the case,
+                one can say that vertices u and v are strongly connected -
+                they are in a strongly connected sub-graph. <br /><br />
+                <b>Time Complexity:</b><br />
+                <b>adjacency matrix:</b><i>O(|V|²)</i><br />
+                <b>adjacency list:</b><i>O(|E|+|V|)</i>
+              </p>
+            </a>
+          </div>
+
+          <div id="tarjan's algorithm" class="category-item">
+            <a href="tarjans.html">
+              <h4>Tarjan's algorithm</h4>
+              <p>
+                Tarjan's algorithm is based on depth-first search (DFS).
+                The vertices are indexed as they are traversed by the DFS
+                procedure. While returning from the recursion of DFS,
+                every vertex V gets assigned a vertex L as a
+                representative. L is a vertex with the least index that
+                can be reached from V. Nodes with the same representative
+                assigned are located in the same strongly connected
+                component. <br /><br />
+                <b>Time Complexity:</b><br />
+                <i>O(|E|+|V|)</i>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+  <a href="#" class="back-to-top">
+    <i class="material-icons">arrow_upward</i>
+  </a>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function showRelevant(name = "") {
+      const resultsContainer = document.getElementById("results");
+      const categoryContainers = document.querySelectorAll(".categories");
+      const allAlgorithms = document.querySelectorAll(".category-item");
+
+      // Hide all categories and algorithms initially
+      categoryContainers.forEach(category => {
+        category.style.display = "none";
+      });
+      allAlgorithms.forEach(algo => {
+        algo.style.display = "none";
+      });
+
+      if (name === "") {
+        // Show all categories and algorithms if search is empty
+        categoryContainers.forEach(category => {
+          category.style.display = "block";
+        });
+        allAlgorithms.forEach(algo => {
+          algo.style.display = "block";
+        });
+      } else {
+        // Clear previous results
+        resultsContainer.innerHTML = "";
+        let matchFound = false;
+
+        // Filter algorithms based on search term
+        allAlgorithms.forEach(algo => {
+          if (
+            algo.id.toLowerCase().includes(name.toLowerCase()) ||
+            algo.querySelector("h4").textContent.toLowerCase().includes(name.toLowerCase())
+          ) {
+            algo.style.display = "block";
+            matchFound = true;
+          }
+        });
+
+        if (matchFound) {
+          // Show only categories that have matching algorithms
+          categoryContainers.forEach(category => {
+            const visibleItems = category.querySelectorAll(".category-item[style='display: block;']");
+            if (visibleItems.length > 0) {
+              category.style.display = "block";
+            }
+          });
+        } else {
+          resultsContainer.innerHTML = `No results matching "${name}".`;
+        }
+      }
+    }
+
+    // Attach the input event listener to the search input field
+    document.getElementById("search").addEventListener("input", function () {
+      showRelevant(this.value);
+    });
+
+  </script>
+
+</body>
+
+</html>
