@@ -28,67 +28,61 @@
   <main>
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container-fluid">
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Graphs</li>
-        </ol>
-        <h2>Graph algorithms</h2>
-      </div>
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Graphs</li>
+      </ol>
+      <h2>Graph algorithms</h2>
     </section>
 
     <!-- ======= Overview Section ======= -->
-    <section id="overview" class="categories">
-      <div class="container">
-        <div class="section-title">
-          <h2>Overview</h2>
-          <p>
-            A graph is a structure amounting to a set of objects in which
-            some pairs of the objects are in some sense "related".
-            <br /><br />
-            They consist of a fixed number of vertices (or nodes), which
-            represent the data points and edges, which show the relation
-            between vertices. These edges can be directed or undirected.
-            <br /><br />For example, if the vertices represent people at a
-            party, and there is an edge between two people if they shake
-            hands, then this graph is undirected because any person A can
-            shake hands with a person B only if B also shakes hands with A.
-            In contrast, if any edge from a person A to a person B
-            corresponds to A owes money to B, then this graph is directed,
-            because owing money is not necessarily reciprocated. The former
-            type of graph is called an undirected graph while the latter
-            type of graph is called a directed graph. <br /><br />Typically,
-            a graph is depicted in diagrammatic form as a set of dots or
-            circles for the vertices, joined by lines or curves for the
-            edges.
-          </p>
-        </div>
+    <section id="overview">
+      <div class="section-title">
+        <h2>Overview</h2>
+        <p>
+          A graph is a structure amounting to a set of objects in which
+          some pairs of the objects are in some sense "related".
+          <br /><br />
+          They consist of a fixed number of vertices (or nodes), which
+          represent the data points and edges, which show the relation
+          between vertices. These edges can be directed or undirected.
+          <br /><br />
+          For example, if the vertices represent people at a
+          party, and there is an edge between two people if they shake
+          hands, then this graph is undirected because any person A can
+          shake hands with a person B only if B also shakes hands with A.
+          In contrast, if any edge from a person A to a person B
+          corresponds to A owes money to B, then this graph is directed,
+          because owing money is not necessarily reciprocated. The former
+          type of graph is called an undirected graph while the latter
+          type of graph is called a directed graph.
+          <br /><br />
+          Typically, a graph is depicted in diagrammatic form as a set of dots or
+          circles for the vertices, joined by lines or curves for the
+          edges.
+        </p>
       </div>
     </section>
 
     <!-- ======= Search Section ======= -->
-    <section id="search-section" class="search">
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>Search</h2>
-        </div>
+    <section class="search">
+      <div class="section-title">
+        <h2>Search</h2>
+      </div>
 
-        <div class="search-container">
-          <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
-        </div>
+      <div class="search-container">
+        <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
       </div>
     </section>
 
     <!-- ======= Search Results Section ======= -->
     <section id="search-results">
-      <div class="container">
-        <div id="results"></div>
-      </div>
+      <div id="results"></div>
     </section>
 
-    <!-- ======= Graph Traversal Section ======= -->
-    <section id="graph-traversal" class="categories">
-      <div class="container">
+    <div class="types">
+      <!-- ======= Graph Traversal Section ======= -->
+      <section id="graph-traversal">
         <div class="section-title">
           <h2>Graph Traversal</h2>
           <p>
@@ -98,8 +92,8 @@
           </p>
         </div>
 
-        <div class="category-grid">
-          <div id="breadth-first-search" class="category-item">
+        <div class="card-grid">
+          <div id="breadth-first-search" class="card-item">
             <a href="bfs.html">
               <h4>Breadth-first search</h4>
               <p>
@@ -113,7 +107,7 @@
             </a>
           </div>
 
-          <div id="depth-first-search" class="category-item">
+          <div id="depth-first-search" class="card-item">
             <a href="dfs.html">
               <h4>Depth-first search</h4>
               <p>
@@ -127,14 +121,12 @@
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <!-- ======= MST Section ======= -->
-    <section id="mst" class="categories">
-      <div class="container">
+      <!-- ======= MST Section ======= -->
+      <section id="mst">
         <div class="section-title">
           <h2>Minimum Spanning Tree</h2>
           <p>
@@ -145,8 +137,8 @@
           </p>
         </div>
 
-        <div class="category-grid">
-          <div id="prim's algorithm" class="category-item">
+        <div class="card-grid">
+          <div id="prim's algorithm" class="card-item">
             <a href="prims.html">
               <h4>Prim's algorithm</h4>
               <p>
@@ -164,7 +156,7 @@
             </a>
           </div>
 
-          <div id="kruskal's algorithm" class="category-item">
+          <div id="kruskal's algorithm" class="card-item">
             <a href="kruskals.html">
               <h4>Kruskal's algorithm</h4>
               <p>
@@ -176,14 +168,12 @@
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <!-- ======= SCC Section ======= -->
-    <section id="scc" class="categories">
-      <div class="container">
+      <!-- ======= SCC Section ======= -->
+      <section id="scc">
         <div class="section-title">
           <h2>Strongly Connected Components</h2>
           <p>
@@ -192,8 +182,8 @@
           </p>
         </div>
 
-        <div class="category-grid">
-          <div id="kosaraju's algorithm" class="category-item">
+        <div class="card-grid">
+          <div id="kosaraju's algorithm" class="card-item">
             <a href="kosarajus.html">
               <h4>Kosaraju's algorithm</h4>
               <p>
@@ -211,7 +201,7 @@
             </a>
           </div>
 
-          <div id="tarjan's algorithm" class="category-item">
+          <div id="tarjan's algorithm" class="card-item">
             <a href="tarjans.html">
               <h4>Tarjan's algorithm</h4>
               <p>
@@ -228,9 +218,11 @@
               </p>
             </a>
           </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
   </main>
 
 
@@ -243,62 +235,40 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    function showRelevant(name = "") {
+    function filterAlgorithms(searchTerm = "") {
       const resultsContainer = document.getElementById("results");
-      const categoryContainers = document.querySelectorAll(".categories");
-      const allAlgorithms = document.querySelectorAll(".category-item");
+      const categoriesContainer = document.querySelector(".types");
+      const algorithmCards = categoriesContainer.querySelectorAll(".card-item");
 
-      // Hide all categories and algorithms initially
-      categoryContainers.forEach(category => {
-        category.style.display = "none";
-      });
-      allAlgorithms.forEach(algo => {
-        algo.style.display = "none";
-      });
+      // Hide all algorithms initially
+      categoriesContainer.style.display = "none";
+      resultsContainer.innerHTML = "";
 
-      if (name === "") {
-        // Show all categories and algorithms if search is empty
-        categoryContainers.forEach(category => {
-          category.style.display = "block";
-        });
-        allAlgorithms.forEach(algo => {
-          algo.style.display = "block";
-        });
+      if (searchTerm === "") {
+        // Show all categories and algorithms if the search term is empty
+        categoriesContainer.style.display = "block";
+        resultsContainer.style.display = "none";
       } else {
-        // Clear previous results
-        resultsContainer.innerHTML = "";
-        let matchFound = false;
+        // Clear previous results and filter based on the search term
+        let hasResults = false;
 
-        // Filter algorithms based on search term
-        allAlgorithms.forEach(algo => {
-          if (
-            algo.id.toLowerCase().includes(name.toLowerCase()) ||
-            algo.querySelector("h4").textContent.toLowerCase().includes(name.toLowerCase())
-          ) {
-            algo.style.display = "block";
-            matchFound = true;
+        algorithmCards.forEach(card => {
+          const cardTitle = card.querySelector("h4").textContent.toLowerCase();
+          if (cardTitle.includes(searchTerm)) {
+            resultsContainer.appendChild(card.cloneNode(true));
+            hasResults = true;
           }
         });
 
-        if (matchFound) {
-          // Show only categories that have matching algorithms
-          categoryContainers.forEach(category => {
-            const visibleItems = category.querySelectorAll(".category-item[style='display: block;']");
-            if (visibleItems.length > 0) {
-              category.style.display = "block";
-            }
-          });
-        } else {
-          resultsContainer.innerHTML = `No results matching "${name}".`;
+        if (!hasResults) {
+          resultsContainer.innerHTML = `No results matching "${searchTerm}".`;
         }
       }
     }
 
-    // Attach the input event listener to the search input field
     document.getElementById("search").addEventListener("input", function () {
-      showRelevant(this.value);
+      filterAlgorithms(this.value.toLowerCase().trim());
     });
-
   </script>
 
 </body>

@@ -12,14 +12,15 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
   <!-- Material Icons and Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
 
   <!-- Main CSS File -->
   <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
+
   <!-- ======= Header ======= -->
   <header class="header">
     <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
@@ -28,90 +29,91 @@
   <main>
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container-fluid">
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Sorting</li>
-        </ol>
-        <h2>Sorting algorithms</h2>
-      </div>
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Sorting</li>
+      </ol>
+      <h2>Sorting algorithms</h2>
     </section>
 
     <!-- ======= Overview Section ======= -->
-    <section id="overview" class="categories">
-      <div class="container">
-        <div class="section-title">
-          <h2>Overview</h2>
-          <p>
-            A sorting algorithm is an algorithm that puts elements of a list in a certain order (thus sorting the list).
-            The most frequently used orders are numerical order for lists of numbers and lexicographical order for lists
-            of strings.
-            <br /><br />
-            To put it more formally, the output generally has to fulfill two conditions:
-          </p>
-          <ul>
-            <li>The output is in nondecreasing order</li>
-            <li>The output is a permutation of the input</li>
-          </ul>
-          <p>
-            Or, to put it simply, when running a sorting algorithm we expect an output that contains all the elements
-            originally present in the input arranged in such a way that the smallest element (according to the operation
-            used to sort the list) is in the leftmost place, with every element following being either bigger or equal
-            to its predecessor.
-            <br /><br />
-            Sorting algorithms can generally be classified into three distinct categories:
-          </p>
-          <ul>
-            <li>Comparison sorts</li>
-            <li>Non-comparison sorts</li>
-            <li>Others</li>
-          </ul>
-          <p>
-            On this page, you can find many implementations for every category. If you need a visualization for a
-            certain algorithm, just use the search function to find it quickly.
-          </p>
-        </div>
+    <section id="overview">
+      <div class="section-title">
+        <h2>Overview</h2>
+        <p>
+          A sorting algorithm is an algorithm that puts elements of a list in
+          a certain order (thus sorting the list). The most frequently used
+          orders are numerical order for lists of numbers and lexicographical
+          order for lists of strings.
+          <br /><br />
+          To put it more formally, the output generally has to fulfill two
+          conditions:
+        </p>
+        <ul>
+          <li>The output is in nondecreasing order</li>
+          <li>The output is a permutation of the input</li>
+        </ul>
+        <p>
+          Or, to put it simply, when running a sorting algorithm we expect an
+          output that contains all the elements originally present in the
+          input arranged in such a way that the smallest element (according to
+          the operation used to sort the list) is in the leftmost place, with
+          every element following being either bigger or equal to its
+          predecessor.
+          <br /><br />
+          Sorting algorithms can generally be classified into three distinct
+          categories:
+        </p>
+        <ul>
+          <li>Comparison sorts</li>
+          <li>Non-comparison sorts</li>
+          <li>Others</li>
+        </ul>
+        <p>
+          On this page, you can find many implementations for every category.
+          If you need a visualization for a certain algorithm, just use the
+          search function to find it quickly.
+        </p>
       </div>
     </section>
 
     <!-- ======= Search Section ======= -->
-    <section id="search-section" class="search">
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>Search</h2>
-        </div>
+    <section class="search">
+      <div class="section-title">
+        <h2>Search</h2>
+      </div>
 
-        <div class="search-container">
-          <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
-        </div>
+      <div class="search-container">
+        <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
       </div>
     </section>
 
     <!-- ======= Search Results Section ======= -->
     <section id="search-results">
-      <div class="container">
-        <div id="results"></div>
-      </div>
+      <div id="results" class="card-grid"></div>
     </section>
 
-    <!-- ======= Comparison Sorts Section ======= -->
-    <section id="comparison-sorts" class="categories">
-      <div class="container">
+    <div class="types">
+      <!-- ======= Comparison Sorts Section ======= -->
+      <section id="comparison-sorts">
         <div class="section-title">
           <h2>Comparison Sorts</h2>
-          <p>A comparison sort is a type of sorting algorithm that only reads the list elements through a single
-            abstract comparison operation that determines which of two elements should occur first in the final sorted
-            list.</p>
+          <p>
+            A comparison sort is a type of sorting algorithm that only reads the
+            list elements through a single abstract comparison operation that
+            determines which of two elements should occur first in the final
+            sorted list.
+          </p>
         </div>
 
-        <div class="category-grid">
-
-          <div id="bubblesort" class="category-item">
+        <div class="card-grid">
+          <div id="bubblesort" class="card-item">
             <a href="bubblesort.html">
               <h4>Bubble Sort</h4>
               <p>
-                Bubblesort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent
-                elements, and swaps them if they are in the wrong order.
+                Bubblesort is a simple sorting algorithm that repeatedly steps
+                through the list, compares adjacent elements, and swaps them if
+                they are in the wrong order.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -120,12 +122,12 @@
             </a>
           </div>
 
-          <div id="cocktailshakersort" class="category-item">
+          <div id="cocktailshakersort" class="card-item">
             <a href="cocktailshakersort.html">
               <h4>Cocktail Shaker Sort</h4>
               <p>
-                Cocktail Shaker Sort is a variation of bubble sort that sorts in both directions on each pass through
-                the list.
+                Cocktail Shaker Sort is a variation of bubble sort that sorts in
+                both directions on each pass through the list.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -134,12 +136,12 @@
             </a>
           </div>
 
-          <div id="combsort" class="category-item">
+          <div id="combsort" class="card-item">
             <a href="combsort.html">
               <h4>Comb Sort</h4>
               <p>
-                Combsort is an extension of bubble sort. It compares elements divided by a gap which shrinks after each
-                pass through the list.
+                Combsort is an extension of bubble sort. It compares elements
+                divided by a gap which shrinks after each pass through the list.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n log n)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -148,12 +150,13 @@
             </a>
           </div>
 
-          <div id="gnomesort" class="category-item">
+          <div id="gnomesort" class="card-item">
             <a href="gnomesort.html">
               <h4>Gnome Sort</h4>
               <p>
-                The gnome sort is a sorting algorithm that is similar to insertion sort but sorts by a series of swaps,
-                similar to bubble sort.
+                The gnome sort is a sorting algorithm that is similar to
+                insertion sort but sorts by a series of swaps, similar to bubble
+                sort.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -162,12 +165,13 @@
             </a>
           </div>
 
-          <div id="insertionsort" class="category-item">
+          <div id="insertionsort" class="card-item">
             <a href="insertionsort.html">
               <h4>Insertion Sort</h4>
               <p>
-                Insertion sort is a simple sorting algorithm that builds the final sorted list one item at a time by
-                inserting each element at its correct position.
+                Insertion sort is a simple sorting algorithm that builds the
+                final sorted list one item at a time by inserting each element
+                at its correct position.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -176,12 +180,13 @@
             </a>
           </div>
 
-          <div id="mergesort" class="category-item">
+          <div id="mergesort" class="card-item">
             <a href="mergesort.html">
               <h4>Merge Sort</h4>
               <p>
-                Mergesort is a divide-and-conquer algorithm that works by dividing the unsorted list into two
-                approximately equal sublists, sorting them, and then merging them back together.
+                Mergesort is a divide-and-conquer algorithm that works by
+                dividing the unsorted list into two approximately equal
+                sublists, sorting them, and then merging them back together.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n log n)</i><br />
                 <b>Average-case:</b> <i>O(n log n)</i> <br />
@@ -190,12 +195,13 @@
             </a>
           </div>
 
-          <div id="quicksort" class="category-item">
+          <div id="quicksort" class="card-item">
             <a href="quicksort.html">
               <h4>Quick Sort</h4>
               <p>
-                Quicksort is a divide-and-conquer algorithm. It selects a pivot element, partitions the array into two
-                sub-arrays, and then sorts them recursively.
+                Quicksort is a divide-and-conquer algorithm. It selects a pivot
+                element, partitions the array into two sub-arrays, and then
+                sorts them recursively.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n log n)</i><br />
                 <b>Average-case:</b> <i>O(n log n)</i> <br />
@@ -204,12 +210,13 @@
             </a>
           </div>
 
-          <div id="selectionsort" class="category-item">
+          <div id="selectionsort" class="card-item">
             <a href="selectionsort.html">
               <h4>Selection Sort</h4>
               <p>
-                Selection sort repeatedly selects the smallest remaining element and swaps it with the first unsorted
-                element, building a sorted list one element at a time.
+                Selection sort repeatedly selects the smallest remaining element
+                and swaps it with the first unsorted element, building a sorted
+                list one element at a time.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n²)</i><br />
                 <b>Average-case:</b> <i>O(n²)</i> <br />
@@ -217,46 +224,50 @@
               </p>
             </a>
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="divider"></div> 
-    <!-- ======= Non-Comparison Sorts Section ======= -->
-    <section id="non-comparison-sorts" class="categories">
-      <div class="container">
+      <div class="divider"></div>
+
+      <!-- ======= Non-Comparison Sorts Section ======= -->
+      <section id="non-comparison-sorts">
         <div class="section-title">
           <h2>Non-Comparison Sorts</h2>
           <p>
-            Non-Comparison Sorts are sorting algorithms that sort a given input without comparing the elements, instead
-            making certain assumptions about the data. Examples include Counting Sort, which sorts using key-value, and
-            Bucket Sort, which examines bits of keys.
+            Non-Comparison Sorts are sorting algorithms that sort a given input
+            without comparing the elements, instead making certain assumptions
+            about the data. Examples include Counting Sort, which sorts using
+            key-value, and Bucket Sort, which examines bits of keys.
           </p>
         </div>
 
-        <div class="category-grid">
-          <div id="countingsort" class="category-item">
+        <div class="card-grid">
+          <div id="countingsort" class="card-item">
             <a href="countingsort.html">
               <h4>Counting Sort</h4>
               <p>
-                Counting sort is an algorithm for sorting a collection of objects according to keys that are small
-                integers. It operates by counting the number of objects that have each distinct key value, and using
-                arithmetic on those counts to determine the positions of each key value in the output sequence.
+                Counting sort is an algorithm for sorting a collection of
+                objects according to keys that are small integers. It operates
+                by counting the number of objects that have each distinct key
+                value, and using arithmetic on those counts to determine the
+                positions of each key value in the output sequence.
                 <br /><br />
                 <b>Time complexity:</b> <i>O(n+k)</i><br />
-                with n being the number of elements and k being the number of keys.
+                with n being the number of elements and k being the number of
+                keys.
               </p>
             </a>
           </div>
 
-          <div id="radixsort" class="category-item">
+          <div id="radixsort" class="card-item">
             <a href="radixsort.html">
               <h4>Radix Sort</h4>
               <p>
-                Radix sort avoids comparison by creating and distributing elements into buckets according to their
-                radix. For elements with more than one significant digit, this bucketing process is repeated for each
-                digit while preserving the ordering of the prior step, until all digits have been considered.
+                Radix sort avoids comparison by creating and distributing
+                elements into buckets according to their radix. For elements
+                with more than one significant digit, this bucketing process is
+                repeated for each digit while preserving the ordering of the
+                prior step, until all digits have been considered.
                 <br /><br />
                 <b>Time complexity:</b> <i>O(nw)</i><br />
                 with n being the number of elements and w being the key length.
@@ -264,31 +275,34 @@
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="divider"></div> 
-    <!-- ======= Others Section ======= -->
-    <section id="other-sorts" class="categories">
-      <div class="container">
+      <div class="divider"></div>
+
+      <!-- ======= Others Section ======= -->
+      <section id="other-sorts">
         <div class="section-title">
           <h2>Others</h2>
           <p>
-            Algorithms in this category are impractical for real-life use in traditional software contexts due to
-            extremely poor performance or specialized hardware requirements. These sorts are usually described for
-            educational purposes to demonstrate how the runtime of algorithms is estimated.
+            Algorithms in this category are impractical for real-life use in
+            traditional software contexts due to extremely poor performance or
+            specialized hardware requirements. These sorts are usually described
+            for educational purposes to demonstrate how the runtime of
+            algorithms is estimated.
           </p>
         </div>
 
-        <div class="category-grid">
-          <div id="bogosort" class="category-item">
+        <div class="card-grid">
+          <div id="bogosort" class="card-item">
             <a href="bogosort.html">
-              <h4>Bogosort</h4>
+              <h4>Bogo Sort</h4>
               <p>
-                Bogosort is a highly inefficient sorting algorithm based on the generate and test paradigm. The function
-                successively generates permutations of its input until it finds one that is sorted. An analogy for the
-                working of the algorithm is to sort a deck of cards by throwing the deck into the air, picking the cards
-                up at random, and repeating the process until the deck is sorted.
+                Bogosort is a highly inefficient sorting algorithm based on the
+                generate and test paradigm. The function successively generates
+                permutations of its input until it finds one that is sorted. An
+                analogy for the working of the algorithm is to sort a deck of
+                cards by throwing the deck into the air, picking the cards up at
+                random, and repeating the process until the deck is sorted.
                 <br /><br />
                 <b>Best-case:</b> <i>O(n)</i><br />
                 <b>Average-case:</b> <i>O((n+1)!)</i> <br />
@@ -297,12 +311,9 @@
             </a>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
+    </div>
   </main>
-
-
 
   <a href="#" class="back-to-top">
     <i class="material-icons">arrow_upward</i>
@@ -311,66 +322,42 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    function showRelevant(name = "") {
+    function filterAlgorithms(searchTerm = "") {
       const resultsContainer = document.getElementById("results");
-      const categoryContainers = document.querySelectorAll(".categories");
-      const allAlgorithms = document.querySelectorAll(".category-item");
+      const categoriesContainer = document.querySelector(".types");
+      const algorithmCards = categoriesContainer.querySelectorAll(".card-item");
 
-      // Hide all categories and algorithms initially
-      categoryContainers.forEach(category => {
-        category.style.display = "none";
-      });
-      allAlgorithms.forEach(algo => {
-        algo.style.display = "none";
-      });
+      // Hide all algorithms initially
+      categoriesContainer.style.display = "none";
+      resultsContainer.innerHTML = "";
 
-      if (name === "") {
-        // Show all categories and algorithms if search is empty
-        categoryContainers.forEach(category => {
-          category.style.display = "block";
-        });
-        allAlgorithms.forEach(algo => {
-          algo.style.display = "block";
-        });
+      if (searchTerm === "") {
+        // Show all categories and algorithms if the search term is empty
+        categoriesContainer.style.display = "block";
+        resultsContainer.style.display = "none";
       } else {
-        // Clear previous results
-        resultsContainer.innerHTML = "";
-        let matchFound = false;
+        // Clear previous results and filter based on the search term
+        let hasResults = false;
 
-        // Filter algorithms based on search term
-        allAlgorithms.forEach(algo => {
-          if (
-            algo.id.toLowerCase().includes(name.toLowerCase()) ||
-            algo.querySelector("h4").textContent.toLowerCase().includes(name.toLowerCase())
-          ) {
-            algo.style.display = "block";
-            matchFound = true;
+        algorithmCards.forEach(card => {
+          const cardTitle = card.querySelector("h4").textContent.toLowerCase();
+          if (cardTitle.includes(searchTerm)) {
+            resultsContainer.appendChild(card.cloneNode(true));
+            hasResults = true;
           }
         });
 
-        if (matchFound) {
-          // Show only categories that have matching algorithms
-          categoryContainers.forEach(category => {
-            const visibleItems = category.querySelectorAll(".category-item[style='display: block;']");
-            if (visibleItems.length > 0) {
-              category.style.display = "block";
-            }
-          });
-        } else {
-          resultsContainer.innerHTML = `No results matching "${name}".`;
+        if (!hasResults) {
+          resultsContainer.innerHTML = `No results matching "${searchTerm}".`;
         }
       }
     }
 
-    // Attach the input event listener to the search input field
     document.getElementById("search").addEventListener("input", function () {
-      showRelevant(this.value);
+      filterAlgorithms(this.value.toLowerCase().trim());
     });
-
   </script>
 
 </body>
 
 </html>
-
-

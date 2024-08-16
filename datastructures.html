@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Data structures - AlgoViz</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Material Icons and Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header class="header">
+    <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+  </header>
+
+  <main>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Data structures</li>
+      </ol>
+      <h2>Data structures</h2>
+    </section>
+
+    <!-- ======= Overview Section ======= -->
+    <section id="overview">
+      <div class="section-title">
+        <h2>Overview</h2>
+        <p>
+          A data structure is a data organization, management, and storage
+          format that enables efficient access and modification. More
+          precisely, a data structure is a collection of data values, the
+          relationships among them, and the functions or operations that
+          can be applied to the data.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======= Search Section ======= -->
+    <section class="search">
+      <div class="section-title">
+        <h2>Search</h2>
+      </div>
+
+      <div class="search-container">
+        <input id="search" class="search-input" type="search" placeholder="Search names or keywords" />
+      </div>
+    </section>
+
+    <!-- ======= Search Results Section ======= -->
+    <section id="search-results">
+      <div id="results" class="card-grid"></div>
+    </section>
+
+    <div class="types">
+      <!-- ======= Linear Data Structures Section ======= -->
+      <section id="linear-data-structures">
+        <div class="section-title">
+          <h2>Data structures</h2>
+          <p>
+            Linear data structures organize data elements sequentially, where each element is connected to its previous
+            and next element in a single level or dimension.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <div id="array" class="card-item">
+            <a href="array.html">
+              <h4>Array</h4>
+              <p>
+                An array is a collection of elements, each identified by at least one array index or key.
+                Arrays are stored in contiguous memory locations.
+                They can be of fixed size or dynamic.
+                <br /><br />
+                <b>Time Complexity:</b>
+                <br />Access: O(1)
+                <br />Search: O(n)
+              </p>
+            </a>
+          </div>
+
+          <div id="stack" class="card-item">
+            <a href="stack.html">
+              <h4>Stack</h4>
+              <p>
+                A stack is an abstract data type that serves as a collection of elements,
+                with two main operations: push (which adds an element to the collection) and pop
+                (which removes the most recently added element).
+                It follows the Last In First Out (LIFO) principle.
+                <br /><br />
+                <b>Time Complexity:</b><i>Push/Pop: O(1)</i>
+              </p>
+            </a>
+          </div>
+
+
+          <div id="queue" class="card-item">
+            <a href="queue.html">
+              <h4>Queue</h4>
+              <p>
+                A queue is a collection of elements that follows the First In First Out (FIFO) principle.
+                Elements are added at the rear (enqueue) and removed from the front (dequeue).
+                It is often used in scenarios like scheduling, buffering, etc.
+                <br /><br />
+                <b>Time Complexity:</b><i>Enqueue/Dequeue: O(1)</i>
+              </p>
+            </a>
+          </div>
+
+          <div id="singly-linked-list" class="card-item">
+            <a href="singlylinkedlist.html">
+              <h4>Singly Linked List</h4>
+              <p>
+                A singly linked list is a data structure that consists of nodes.
+                Each node contains a data field and a reference (link) to the next node in the sequence.
+                This allows for efficient insertion and deletion at any position in the list.
+                <br /><br />
+                <b>Time Complexity:</b><i>Insertion/Deletion: O(1) at known position, O(n) search</i>
+              </p>
+            </a>
+          </div>
+
+          <div id="doubly-linked-list" class="card-item">
+            <a href="doublylinkedlist.html">
+              <h4>Doubly linked list</h4>
+              <p>
+                A doubly linked list is similar to a singly linked list, but each node has two references:
+                one to the next node and another to the previous node, allowing traversal in both directions.
+                <br /><br />
+                <b>Time Complexity:</b><i>Insertion/Deletion: O(1) at known position, O(n) search</i>
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ======= Non-Linear Data Structures Section ======= -->
+      <section id="non-linear-data-structures">
+        <div class="section-title">
+          <h2>Non-Linear Data Structures</h2>
+          <p>
+            Non-linear data structures arrange data in a hierarchical manner, where each element may be connected to
+            multiple elements.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <div id="tree" class="card-item">
+            <a href="tree.html">
+              <h4>Tree</h4>
+              <p>
+                A tree is a hierarchical data structure that consists of nodes, where each node contains a value
+                and references to its child nodes. The topmost node is called the root, and the nodes without children
+                are called leaves.
+              </p>
+            </a>
+          </div>
+
+          <div id="graph" class="card-item">
+            <a href="graph.html">
+              <h4>Graph</h4>
+              <p>
+                A graph is a data structure that consists of a finite set of nodes (vertices) and a set of edges
+                that connect pairs of nodes. Graphs can be directed or undirected, and they are used to represent
+                networks.
+              </p>
+            </a>
+          </div>
+
+          <div id="heap" class="card-item">
+            <a href="heap.html">
+              <h4>Heap</h4>
+              <p>
+                A heap is a special tree-based data structure that satisfies the heap property.
+                In a max heap, for any given node, the value of that node is greater than or equal to the values of its
+                children.
+                In a min heap, the value is less than or equal to the values of its children.
+              </p>
+            </a>
+          </div>
+
+          <div id="hash-table" class="card-item">
+            <a href="hashtable.html">
+              <h4>Hash table</h4>
+              <p>
+                A hash table is a data structure that implements an associative array abstract data type,
+                a structure that can map keys to values. It uses a hash function to compute an index into an array of
+                buckets or slots.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <a href="#" class="back-to-top">
+    <i class="material-icons">arrow_upward</i>
+  </a>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function filterAlgorithms(searchTerm = "") {
+      const resultsContainer = document.getElementById("results");
+      const categoriesContainer = document.querySelector(".types");
+      const algorithmCards = categoriesContainer.querySelectorAll(".card-item");
+
+      // Hide all algorithms initially
+      categoriesContainer.style.display = "none";
+      resultsContainer.innerHTML = "";
+
+      if (searchTerm === "") {
+        // Show all categories and algorithms if the search term is empty
+        categoriesContainer.style.display = "block";
+        resultsContainer.style.display = "none";
+      } else {
+        // Clear previous results and filter based on the search term
+        let hasResults = false;
+
+        algorithmCards.forEach(card => {
+          const cardTitle = card.querySelector("h4").textContent.toLowerCase();
+          if (cardTitle.includes(searchTerm)) {
+            resultsContainer.appendChild(card.cloneNode(true));
+            hasResults = true;
+          }
+        });
+
+        if (!hasResults) {
+          resultsContainer.innerHTML = `No results matching "${searchTerm}".`;
+        }
+      }
+    }
+
+    document.getElementById("search").addEventListener("input", function () {
+      filterAlgorithms(this.value.toLowerCase().trim());
+    });
+  </script>
+
+</body>
+
+</html>
