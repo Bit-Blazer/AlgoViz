@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bubble Sort - AlgoViz</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Material Icons and Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header class="header">
+    <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+  </header>
+
+  <main>
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Sorting</li>
+        <li>Bubble Sort</li>
+      </ol>
+      <h2>Bubble Sort</h2>
+    </section>
+
+    <!-- ======= Overview Section ======= -->
+    <section id="overview">
+      <div class="section-title">
+        <h2>Overview</h2>
+        <p>
+          Bubble Sort is a simple comparison-based sorting algorithm. In this algorithm, each pair of adjacent elements
+          is compared, and the elements are swapped if they are in the wrong order. This process is repeated until the
+          list is sorted.
+          <br /><br /> <b>Time Complexity:</b>
+          <br />Best case: O(n) - When the array is already sorted
+          <br />Average case: O(n²) - When the array elements are in random order
+          <br />Worst case: O(n²) - When the array is in reverse order
+          <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======= Visualization Section ======= -->
+    <section id="visualization">
+      <div class="counters">
+        <span id="comparison-count">No. of comparisons: 0</span>
+        <span id="swap-count">No. of swaps: 0</span>
+      </div>
+      <svg id="visualization-area"></svg>
+    </section>
+
+    <!-- ======= Code and Explanation Section ======= -->
+    <section id="code">
+      <div class="row">
+        <div class="col">
+          <div class="ide">
+            <code>while (swapped)</code><br>
+            <code>&emsp;&emsp;swapped = false</code><br>
+            <code>&emsp;&emsp;for i = 0 to length(list) - 1</code><br>
+            <code>&emsp;&emsp;&emsp;&emsp;if list[i] > list[i + 1]</code><br>
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(list[i], list[i + 1])</code><br>
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped = true</code>
+          </div>
+        </div>
+        <div class="col">
+          <div class="ide">
+            <code>SHORT EXPLANATION</code><br>
+            <code>------------------</code><br>
+            <code>1. Starting at index 0, compare the current element with the next element</code><br>
+            <code>- If the current element is greater than the next element, swap them</code><br>
+            <code>- If the current element is less than the next element, move to the next element</code><br>
+            <code>2. Repeat Step 1 until the list is sorted</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Controls Section ======= -->
+    <section id="controls">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <label for="speed-slider">Speed (ms):</label>
+            <span>50</span>
+            <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
+              oninput="updateDelay(this.value)" />
+            <span>1000</span>
+          </div>
+          <div class="row">
+            <label for="num-elements">Number of Elements:</label>
+            <span>5</span>
+            <input id="num-elements" type="range" min="5" max="50" step="1" value="15" oninput="newSet(this.value)" />
+            <span>50</span>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <label for="custom-data">Input Data?</label>
+            <input id="custom-data" type="checkbox"
+              onchange="document.querySelector('#data-input').disabled = !this.checked;" />
+          </div>
+          <div class="row">
+            <label for="data-input">Data Generation:</label>
+            <input id="data-input" type="text" placeholder="10,42,34,55,..." oninput="updateDataFromInput(this.value);"
+              disabled />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button id="sort-button" onclick="bubbleSort()" class="btn">Sort</button>
+        <button id="stop-button" onclick="stopSort()" class="btn">Stop</button>
+      </div>
+    </section>
+  </main>
+
+  <a href="#" class="back-to-top">
+    <i class="material-icons">arrow_upward</i>
+  </a>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- External JS Libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const visu = document.querySelector("#visualization-area");
+      visu.setAttribute("width", "100%");
+      visu.setAttribute("height", "370");
+      visu.setAttribute("viewBox", `0 0 ${window.innerWidth} 370`);
+    });
+
+    let isSorting = false;
+    let delay = 200;
+    const svg = d3.select("#visualization-area");
+    const width = window.innerWidth;
+    const height = 370;
+    let data = [];
+    let comparisonCount = 0;
+    let swapCount = 0;
+
+    function updateDelay(newDelay) {
+      delay = newDelay;
+    }
+
+    function newSet(num = 15) {
+      data = Array.from({ length: num }, () => Math.floor(Math.random() * 200) + 1);
+      resetVisualization();
+      drawBars();
+    }
+
+    function stopSort() {
+      isSorting = false;
+      document.querySelector('#sort-button').disabled = false;
+      document.querySelector('#stop-button').disabled = true;
+    }
+
+    function updateDataFromInput(inputData = "107,46,59,34,39,22,16,44,4,20,55,24,74,94,95") {
+      data = inputData.split(",").map(Number);
+      if (data.length > 50) {
+        data = data.slice(0, 50);
+      }
+      resetVisualization();
+      drawBars();
+    }
+
+    function resetVisualization() {
+      svg.selectAll("rect").remove();
+      svg.selectAll("text").remove();
+      comparisonCount = 0;
+      swapCount = 0;
+      isSorting = false;
+    }
+
+    function drawBars() {
+      const barWidth = Math.floor(width / data.length);
+      const maxHeight = Math.max(...data);
+      const yScale = d3.scaleLinear().domain([0, maxHeight]).range([0, height - 20]);
+
+      svg.selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", (d, i) => i * barWidth)
+        .attr("y", d => height - yScale(d))
+        .attr("width", barWidth - 5)
+        .attr("height", d => yScale(d))
+        .attr("class", "bar")
+        .attr("fill", "#CC1616")
+        .attr("id", (d, i) => `rect${i}`);
+
+      svg.selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("x", (d, i) => i * barWidth + (barWidth - 5) / 2)
+        .attr("y", d => height - yScale(d) - 5)
+        .attr("text-anchor", "middle")
+        .attr("class", "bar-text")
+        .attr("fill", "black")
+        .text(d => d)
+        .attr("id", (d, i) => `text${i}`);
+    }
+
+    async function bubbleSort() {
+      const barWidth = Math.floor(width / data.length);
+
+      comparisonCount = 0;
+      swapCount = 0;
+      isSorting = true;
+
+      document.querySelector('#sort-button').disabled = true;
+      document.querySelector('#stop-button').disabled = false;
+
+      for (let i = 0; i < data.length && isSorting; i++) {
+        for (let j = 0; j < data.length - i - 1 && isSorting; j++) {
+          comparisonCount++;
+          document.querySelector("#comparison-count").innerHTML = `No. of comparisons: ${comparisonCount}`;
+
+          // Highlight the two bars being compared
+          d3.select(`#rect${j}`).style("fill", "#9DBDC6");
+          d3.select(`#rect${j + 1}`).style("fill", "#9DBDC6");
+
+          await new Promise(resolve => setTimeout(resolve, delay));
+
+          if (data[j] > data[j + 1]) {
+            swapCount++;
+            document.querySelector("#swap-count").innerText = `No. of swaps: ${swapCount}`;
+
+            // Swap data values
+            [data[j], data[j + 1]] = [data[j + 1], data[j]];
+
+            // Update the bars' positions
+            let bar1 = d3.select(`#rect${j}`);
+            let bar2 = d3.select(`#rect${j + 1}`);
+            let text1 = d3.select(`#text${j}`);
+            let text2 = d3.select(`#text${j + 1}`);
+
+            // Calculate translation distances
+            const calcTransl1 = j * barWidth;
+            const calcTransl2 = (j + 1) * barWidth;
+
+            // Animate bars
+            bar1.attr("x", calcTransl2).data(data[j + 1]).
+              transition()
+              .duration(delay);
+
+            bar2.attr("x", calcTransl1).data(data[j])
+              .transition()
+              .duration(delay);
+
+            // Animate text
+            text1.attr("x", calcTransl2 + barWidth / 2).transition()
+              .duration(delay);
+
+            text2.attr("x", calcTransl1 + barWidth / 2)
+              .transition()
+              .duration(delay);
+
+            // Wait for transitions to complete
+            await Promise.all([
+              bar1.transition().end(),
+              bar2.transition().end(),
+              text1.transition().end(),
+              text2.transition().end()
+            ]);
+
+            // Swap the IDs of the bars and text
+            bar1.attr("id", `rect${j + 1}`);
+            bar2.attr("id", `rect${j}`);
+            text1.attr("id", `text${j + 1}`);
+            text2.attr("id", `text${j}`);
+          }
+
+          // Revert colors after comparison
+          d3.select(`#rect${j}`).style("fill", "#CC1616");
+          d3.select(`#rect${j + 1}`).style("fill", "#CC1616");
+        }
+
+        // Mark the last sorted element as green
+        d3.select(`#rect${data.length - i - 1}`).style("fill", "#00FF00");
+      }
+
+      // Enable sorting button after sorting completes
+      document.querySelector('#sort-button').disabled = false;
+      document.querySelector('#stop-button').disabled = true;
+      isSorting = false;
+    }
+    newSet();
+  </script>
+</body>
+
+</html>
