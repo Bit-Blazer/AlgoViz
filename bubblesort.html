@@ -111,12 +111,12 @@
 
         <div class="col">
           <div class="row">
-            <label for="custom-data">Input Data?</label>
+            <label for="custom-data">Input your Own Data?</label>
             <input id="custom-data" type="checkbox"
-              onchange="document.querySelector('#data-input').disabled = !this.checked;" />
+              onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
           </div>
           <div class="row">
-            <label for="data-input">Data Generation:</label>
+            <label for="data-input">Enter Data:</label>
             <input id="data-input" type="text" placeholder="10,42,34,55,..." oninput="updateDataFromInput(this.value);"
               disabled />
           </div>
@@ -169,6 +169,9 @@
 
     function stopSort() {
       isSorting = false;
+      document.querySelector('#num-elements').disabled = false;
+      document.querySelector('#data-input').disabled = false;
+      document.querySelector('#custom-data').disabled = false;
       document.querySelector('#sort-button').disabled = false;
       document.querySelector('#stop-button').disabled = true;
     }
@@ -227,6 +230,9 @@
       swapCount = 0;
       isSorting = true;
 
+      document.querySelector('#num-elements').disabled = true;
+      document.querySelector('#data-input').disabled = true;
+      document.querySelector('#custom-data').disabled = true;
       document.querySelector('#sort-button').disabled = true;
       document.querySelector('#stop-button').disabled = false;
 
@@ -236,8 +242,8 @@
           document.querySelector("#comparison-count").innerHTML = `No. of comparisons: ${comparisonCount}`;
 
           // Highlight the two bars being compared
-          d3.select(`#rect${j}`).style("fill", "#9DBDC6");
-          d3.select(`#rect${j + 1}`).style("fill", "#9DBDC6");
+          svg.select(`#rect${j}`).style("fill", "#9DBDC6");
+          svg.select(`#rect${j + 1}`).style("fill", "#9DBDC6");
 
           await new Promise(resolve => setTimeout(resolve, delay));
 
@@ -249,10 +255,10 @@
             [data[j], data[j + 1]] = [data[j + 1], data[j]];
 
             // Update the bars' positions
-            let bar1 = d3.select(`#rect${j}`);
-            let bar2 = d3.select(`#rect${j + 1}`);
-            let text1 = d3.select(`#text${j}`);
-            let text2 = d3.select(`#text${j + 1}`);
+            let bar1 = svg.select(`#rect${j}`);
+            let bar2 = svg.select(`#rect${j + 1}`);
+            let text1 = svg.select(`#text${j}`);
+            let text2 = svg.select(`#text${j + 1}`);
 
             // Calculate translation distances
             const calcTransl1 = j * barWidth;
@@ -291,15 +297,18 @@
           }
 
           // Revert colors after comparison
-          d3.select(`#rect${j}`).style("fill", "#CC1616");
-          d3.select(`#rect${j + 1}`).style("fill", "#CC1616");
+          svg.select(`#rect${j}`).style("fill", "#CC1616");
+          svg.select(`#rect${j + 1}`).style("fill", "#CC1616");
         }
 
         // Mark the last sorted element as green
-        d3.select(`#rect${data.length - i - 1}`).style("fill", "#00FF00");
+        svg.select(`#rect${data.length - i - 1}`).style("fill", "#00FF00");
       }
 
       // Enable sorting button after sorting completes
+      document.querySelector('#num-elements').disabled = false;
+      document.querySelector('#data-input').disabled = false;
+      document.querySelector('#custom-data').disabled = false;
       document.querySelector('#sort-button').disabled = false;
       document.querySelector('#stop-button').disabled = true;
       isSorting = false;
