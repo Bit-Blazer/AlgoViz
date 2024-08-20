@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Bubble Sort - AlgoViz</title>
+  <title>Cocktail Shaker Sort - AlgoViz</title>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon" />
@@ -20,22 +20,20 @@
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header class="header">
     <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
   </header>
 
   <main>
-
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <ol>
         <li><a href="index.html">Home</a></li>
         <li>Sorting</li>
-        <li>Bubble Sort</li>
+        <li>Cocktail Shaker Sort</li>
       </ol>
-      <h2>Bubble Sort Visualization</h2>
+      <h2>Cocktail Shaker Sort Visualization</h2>
     </section>
 
     <!-- ======= Overview Section ======= -->
@@ -43,17 +41,18 @@
       <div class="section-title">
         <h2>Overview</h2>
         <p>
-          Bubble Sort is a simple comparison-based sorting algorithm. In this
-          algorithm, each pair of adjacent elements is compared, and the
-          elements are swapped if they are in the wrong order. This process is
-          repeated until the list is sorted.
+          Cocktail Shaker Sort is a variation of Bubble Sort that sorts in
+          both directions during each pass through the list. It alternates
+          between left-to-right and right-to-left passes, which helps to move
+          both small and large elements into their correct positions more
+          quickly. This bidirectional approach can reduce the number of passes
+          needed in some cases.
           <br /><br />
-          <b>Time Complexity: </b>
+          <b>Time Complexity:</b>
           <br />Best case: O(n) - When the array is already sorted
           <br />Average case: O(n²) - When the array elements are in random order
           <br />Worst case: O(n²) - When the array is in reverse order
-          <br />
-          <b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+          <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
         </p>
       </div>
     </section>
@@ -72,22 +71,35 @@
       <div class="row">
         <div class="col">
           <div class="ide">
-            <code>for i = 0 to length(list) - 1</code><br />
-            <code>&emsp;&emsp;for j = 0 to length(list) - i - 2</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;if list[j] > list[j + 1]</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(list[j], list[j +
-                1])</code>
+            <code>while (swapped)</code><br />
+            <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+            <code>&emsp;&emsp;<span>for</span> x = 0 to length(list) - 2</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code><br />
+            <code>&emsp;&emsp;<span>if</span>(swapped ==<span>false</span>)</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;<span>break</span></code><br />
+            <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+            <code>&emsp;&emsp;<span>for</span> x = length(list) - 2 to 0</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code>
           </div>
         </div>
         <div class="col">
           <div class="ide">
             <code>SHORT EXPLANATION</code><br />
             <code>------------------</code><br />
-            <code>1. Start with the first element and compare it with the next one.</code><br />
-            <code>- If the current element is greater than the next element, swap them.</code><br />
-            <code>2. Move to the next element and repeat the comparison.</code><br />
-            <code>3. After each pass, the largest element in the unsorted portion is moved to its correct position.</code><br />
-            <code>4. Continue this process until the entire list is sorted.</code>
+            <code>1. Starting at index 0, compare the current element with the                next element</code><br />
+            <code>                - If the current element is greater than the next element, swap                them</code><br />
+            <code>                - If the current element is less than the next element, move to                the next element</code><br />
+            <code>2. Repeat Step 1 until you reach the last index</code><br />
+            <code>3. If no swaps were made, the list is sorted; otherwise,                continue</code><br />
+            <code>4. Starting at index length(list) - 2, compare the current                element with the previous element</code><br />
+            <code>                - If the current element is greater than the next element, swap                them</code><br />
+            <code>                - If the current element is less than the next element, move to                the previous element</code><br />
+            <code>5. Repeat Step 4 until you reach the first index</code><br />
+            <code>6. Repeat from Step 1 until no swaps are needed in either                direction</code>
           </div>
         </div>
       </div>
@@ -126,8 +138,12 @@
         </div>
       </div>
       <div class="row">
-        <button id="sort-button" onclick="bubbleSort()" class="btn"> Sort </button>
-        <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+        <button id="sort-button" onclick="cocktailShakerSort()" class="btn">
+          Sort
+        </button>
+        <button id="stop-button" onclick="stopSort()" class="btn">
+          Stop
+        </button>
       </div>
     </section>
   </main>
@@ -165,7 +181,10 @@
     }
 
     function newSet(num = 15) {
-      data = Array.from({ length: num }, () => Math.floor(Math.random() * 200) + 1);
+      data = Array.from(
+        { length: num },
+        () => Math.floor(Math.random() * 200) + 1
+      );
       resetVisualization();
       drawBars();
     }
@@ -175,7 +194,9 @@
       toggleButtons();
     }
 
-    function updateDataFromInput(inputData = "107,46,59,34,39,22,16,44,4,20,55,24,74,94,95") {
+    function updateDataFromInput(
+      inputData = "107,46,59,34,39,22,16,44,4,20,55,24,74,94,95"
+    ) {
       data = inputData.split(",").map(Number);
       if (data.length > 50) {
         data = data.slice(0, 50);
@@ -195,9 +216,13 @@
     function drawBars() {
       const barWidth = Math.floor(width / data.length);
       const maxHeight = Math.max(...data);
-      const yScale = d3.scaleLinear().domain([0, maxHeight]).range([0, height - 20]);
+      const yScale = d3
+        .scaleLinear()
+        .domain([0, maxHeight])
+        .range([0, height - 20]);
 
-      svg.selectAll("rect")
+      svg
+        .selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
@@ -209,7 +234,8 @@
         .attr("fill", "#CC1616")
         .attr("id", (d, i) => `rect${i}`);
 
-      svg.selectAll("text")
+      svg
+        .selectAll("text")
         .data(data)
         .enter()
         .append("text")
@@ -223,48 +249,86 @@
     }
 
     // Main sorting function
-    async function bubbleSort() {
+    async function cocktailShakerSort() {
       comparisonCount = 0;
       swapCount = 0;
       isSorting = true;
 
       toggleButtons();
+
+      let start = 0;
+      let end = data.length - 1;
       let swapped;
 
       do {
         swapped = false;
 
-        for (let i = 0; i < data.length - 1; i++) {
-          for (let j = 0; j < data.length - i - 1; j++) {
-            incrementComparisonCount();
+        // Forward pass
+        for (let i = start; i < end; i++) {
+          incrementComparisonCount();
 
-            // Highlight the two bars being compared
-            svg.select(`#rect${j}`).style("fill", "#9DBDC6");
-            svg.select(`#rect${j + 1}`).style("fill", "#9DBDC6");
+          // Highlight the two bars being compared
+          svg.select(`#rect${i}`).style("fill", "#9DBDC6");
+          svg.select(`#rect${i + 1}`).style("fill", "#9DBDC6");
 
-            await new Promise((resolve) => setTimeout(resolve, delay));
+          await new Promise((resolve) => setTimeout(resolve, delay));
 
-            if (data[j] > data[j + 1]) {
-              incrementSwapCount();
+          if (data[i] > data[i + 1]) {
+            incrementSwapCount();
 
-              // Swap data values
-              [data[j], data[j + 1]] = [data[j + 1], data[j]];
+            // Swap data values
+            [data[i], data[i + 1]] = [data[i + 1], data[i]];
 
-              // Animate the swap
-              await animateBars(j);
+            // Animate the swap
+            await animateBars(i);
 
-              swapped = true;
-            }
-
-            // Revert colors after comparison
-            svg.select(`#rect${j}`).style("fill", "#CC1616");
-            svg.select(`#rect${j + 1}`).style("fill", "#CC1616");
+            swapped = true;
           }
 
-          // Mark the last sorted element as green
-          svg.select(`#rect${data.length - i - 1}`).style("fill", "#00FF00");
+          // Revert colors after comparison
+          svg.select(`#rect${i}`).style("fill", "#CC1616");
+          svg.select(`#rect${i + 1}`).style("fill", "#CC1616");
         }
-      } while (isSorting && swapped);
+
+        // Mark the last sorted element as green
+        svg.select(`#rect${end}`).style("fill", "#00FF00");
+
+        // Reduce the range for the next pass
+        end--;
+
+        // Backward pass
+        for (let i = end; i > start; i--) {
+          incrementComparisonCount();
+
+          // Highlight the two bars being compared
+          svg.select(`#rect${i}`).style("fill", "#9DBDC6");
+          svg.select(`#rect${i - 1}`).style("fill", "#9DBDC6");
+
+          await new Promise((resolve) => setTimeout(resolve, delay));
+
+          if (data[i] < data[i - 1]) {
+            incrementSwapCount();
+
+            // Swap data values
+            [data[i], data[i - 1]] = [data[i - 1], data[i]];
+
+            // Animate the swap
+            await animateBars(i - 1);
+
+            swapped = true;
+          }
+
+          // Revert colors after comparison
+          svg.select(`#rect${i}`).style("fill", "#CC1616");
+          svg.select(`#rect${i - 1}`).style("fill", "#CC1616");
+        }
+
+        // Mark the first sorted element as green
+        svg.select(`#rect${start}`).style("fill", "#00FF00");
+
+        // Increase the starting index for the next pass
+        start++;
+      } while (swapped && isSorting);
 
       // Mark all elements as green to indicate sorting is complete
       for (let i = 0; i < data.length; i++) {
@@ -289,15 +353,9 @@
       const calcTransl2 = (i + 1) * barWidth;
 
       // Animate bars
-      bar1
-        .attr("x", calcTransl2)
-        .transition()
-        .duration(delay);
+      bar1.attr("x", calcTransl2).transition().duration(delay);
 
-      bar2
-        .attr("x", calcTransl1)
-        .transition()
-        .duration(delay);
+      bar2.attr("x", calcTransl1).transition().duration(delay);
 
       // Animate text
       text1
@@ -337,13 +395,17 @@
     // Function to increment the comparison count
     function incrementComparisonCount() {
       comparisonCount++;
-      document.querySelector("#comparison-count").innerHTML = `No. of comparisons: ${comparisonCount}`;
+      document.querySelector(
+        "#comparison-count"
+      ).innerHTML = `No. of comparisons: ${comparisonCount}`;
     }
 
     // Function to increment the swap count
     function incrementSwapCount() {
       swapCount++;
-      document.querySelector("#swap-count").innerText = `No. of swaps: ${swapCount}`;
+      document.querySelector(
+        "#swap-count"
+      ).innerText = `No. of swaps: ${swapCount}`;
     }
 
     newSet();
