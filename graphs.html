@@ -247,7 +247,7 @@
       if (searchTerm === "") {
         // Show all categories and algorithms if the search term is empty
         categoriesContainer.style.display = "block";
-        resultsContainer.style.display = "none";
+        resultsContainer.innerHTML = "";
       } else {
         // Clear previous results and filter based on the search term
         let hasResults = false;
