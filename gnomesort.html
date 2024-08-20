@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Bubble Sort - AlgoViz</title>
+    <title>Gnome Sort - AlgoViz</title>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon" />
@@ -20,22 +20,20 @@
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header class="header">
         <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
     </header>
 
     <main>
-
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
             <ol>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sorting.html">Sorting</a></li>
-                <li>Bubble Sort</li>
+                <li>Gnome Sort</li>
             </ol>
-            <h2>Bubble Sort Visualization</h2>
+            <h2>Gnome Sort Visualization</h2>
         </section>
 
         <!-- ======= Overview Section ======= -->
@@ -43,17 +41,19 @@
             <div class="section-title">
                 <h2>Overview</h2>
                 <p>
-                    Bubble Sort is a simple comparison-based sorting algorithm. In this
-                    algorithm, each pair of adjacent elements is compared, and the
-                    elements are swapped if they are in the wrong order. This process is
-                    repeated until the list is sorted.
+                    Gnome Sort is a simple sorting algorithm similar to the insertion sort, but it
+                    operates with a concept similar to the way a garden gnome sorts flower pots.
+                    The algorithm works by comparing the current element with the previous one and
+                    swapping them if they are out of order. It then moves one step backward and
+                    repeats the process. If the elements are in order, it moves one step forward.
+                    The process continues until the entire list is sorted.
                     <br /><br />
-                    <b>Time Complexity: </b>
-                    <br />Best case: O(n) - When the array is already sorted
-                    <br />Average case: O(n²) - When the array elements are in random order
-                    <br />Worst case: O(n²) - When the array is in reverse order
-                    <br />
-                    <b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                    <b>Time Complexity:</b>
+                    <br />Best case: O(n) - When the list is already sorted or nearly sorted
+                    <br />Average case: O(n²) - As the gnome has to backtrack frequently, similar to insertion sort
+                    <br />Worst case: O(n²) - When the array is initially in reverse order, requiring maximum
+                    backtracking
+                    <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
                 </p>
             </div>
         </section>
@@ -72,21 +72,25 @@
             <div class="row">
                 <div class="col">
                     <div class="ide">
-                        <code>for i = 0 to length(list) - 1</code><br />
-                        <code>&emsp;&emsp;for j = 0 to length(list) - i - 1</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;if list[j] > list[j + 1]</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(list[j], list[j + 1])</code>
+                        <code>i = 1</code><br />
+                        <code><span>while</span> i < length(list)</code><br />
+                        <code>&emsp;&emsp;<span>if</span> i == 0 <span>or</span> list[i - 1] ≤ list[i]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;i += 1</code><br />
+                        <code>&emsp;&emsp;<span>else</span></code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[i], list[i - 1])</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;i -= 1</code><br />
                     </div>
                 </div>
                 <div class="col">
                     <div class="ide">
                         <code>SHORT EXPLANATION</code><br />
                         <code>------------------</code><br />
-                        <code>1. Start with the first element and compare it with the next one.</code><br />
-                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them.</code><br />
-                        <code>2. Move to the next element and repeat the comparison.</code><br />
-                        <code>3. After each pass, the largest element in the unsorted portion is moved to its correct position.</code><br />
-                        <code>4. Continue this process until the entire list is sorted.</code>
+                        <code>1. Start at the first element (index 1) of the list</code><br />
+                        <code>2. If the current element is in the correct order relative to the previous element, move forward</code><br />
+                        <code>3. If the current element is smaller, swap it with the previous one</code><br />
+                        <code>&emsp;&emsp; - Then move one step back to compare the swapped element again</code><br />
+                        <code>4. Continue this process until you reach the end of the list</code><br />
+                        <code>5. The algorithm ensures that smaller elements move toward the beginning and larger ones toward the end, similar to the way a gnome sorts flower pots</code><br />
                     </div>
                 </div>
             </div>
@@ -126,7 +130,7 @@
                 </div>
             </div>
             <div class="row">
-                <button id="sort-button" onclick="bubbleSort()" class="btn"> Sort </button>
+                <button id="sort-button" onclick="gnomeSort()" class="btn"> Sort </button>
                 <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
             </div>
         </section>

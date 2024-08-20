@@ -2,402 +2,159 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Cocktail Shaker Sort - AlgoViz</title>
+    <title>Cocktail Shaker Sort - AlgoViz</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon" />
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <!-- Material Icons and Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
 
-  <!-- Main CSS File -->
-  <link href="style.css" rel="stylesheet" />
+    <!-- Main CSS File -->
+    <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <header class="header">
-    <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
-  </header>
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+    </header>
 
-  <main>
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <ol>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sorting.html">Sorting</a></li>
-        <li>Cocktail Shaker Sort</li>
-      </ol>
-      <h2>Cocktail Shaker Sort Visualization</h2>
-    </section>
+    <main>
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sorting.html">Sorting</a></li>
+                <li>Cocktail Shaker Sort</li>
+            </ol>
+            <h2>Cocktail Shaker Sort Visualization</h2>
+        </section>
 
-    <!-- ======= Overview Section ======= -->
-    <section id="overview">
-      <div class="section-title">
-        <h2>Overview</h2>
-        <p>
-          Cocktail Shaker Sort is a variation of Bubble Sort that sorts in
-          both directions during each pass through the list. It alternates
-          between left-to-right and right-to-left passes, which helps to move
-          both small and large elements into their correct positions more
-          quickly. This bidirectional approach can reduce the number of passes
-          needed in some cases.
-          <br /><br />
-          <b>Time Complexity:</b>
-          <br />Best case: O(n) - When the array is already sorted
-          <br />Average case: O(n²) - When the array elements are in random order
-          <br />Worst case: O(n²) - When the array is in reverse order
-          <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
-        </p>
-      </div>
-    </section>
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Cocktail Shaker Sort is a variation of Bubble Sort that sorts in
+                    both directions during each pass through the list. It alternates
+                    between left-to-right and right-to-left passes, which helps to move
+                    both small and large elements into their correct positions more
+                    quickly. This bidirectional approach can reduce the number of passes
+                    needed in some cases.
+                    <br /><br />
+                    <b>Time Complexity:</b>
+                    <br />Best case: O(n) - When the array is already sorted
+                    <br />Average case: O(n²) - When the array elements are in random order
+                    <br />Worst case: O(n²) - When the array is in reverse order
+                    <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                </p>
+            </div>
+        </section>
 
-    <!-- ======= Visualization Section ======= -->
-    <section id="visualization">
-      <div class="counters">
-        <span id="comparison-count">No. of comparisons: 0</span>
-        <span id="swap-count">No. of swaps: 0</span>
-      </div>
-      <svg id="visualization-area"></svg>
-    </section>
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
 
-    <!-- ======= Code and Explanation Section ======= -->
-    <section id="code">
-      <div class="row">
-        <div class="col">
-          <div class="ide">
-            <code>while (swapped)</code><br />
-            <code>&emsp;&emsp;swapped = <span>false</span></code><br />
-            <code>&emsp;&emsp;<span>for</span> x = 0 to length(list) - 2</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code><br />
-            <code>&emsp;&emsp;<span>if</span>(swapped ==<span>false</span>)</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;<span>break</span></code><br />
-            <code>&emsp;&emsp;swapped = <span>false</span></code><br />
-            <code>&emsp;&emsp;<span>for</span> x = length(list) - 2 to 0</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
-            <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code>
-          </div>
-        </div>
-        <div class="col">
-          <div class="ide">
-            <code>SHORT EXPLANATION</code><br />
-            <code>------------------</code><br />
-            <code>1. Starting at index 0, compare the current element with the next element</code><br />
-            <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
-            <code>&emsp;&emsp; - If the current element is less than the next element, move to the next element</code><br />
-            <code>2. Repeat Step 1 until you reach the last index</code><br />
-            <code>3. If no swaps were made, the list is sorted; otherwise, continue</code><br />
-            <code>4. Starting at index length(list) - 2, compare the current element with the previous element</code><br />
-            <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
-            <code>&emsp;&emsp; - If the current element is less than the next element, move to the previous element</code><br />
-            <code>5. Repeat Step 4 until you reach the first index</code><br />
-            <code>6. Repeat from Step 1 until no swaps are needed in either direction</code>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code>while (swapped)</code><br />
+                        <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+                        <code>&emsp;&emsp;<span>for</span> x = 0 to length(list) - 2</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code><br />
+                        <code>&emsp;&emsp;<span>if</span>(swapped ==<span>false</span>)</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>break</span></code><br />
+                        <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+                        <code>&emsp;&emsp;<span>for</span> x = length(list) - 2 to 0</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Starting at index 0, compare the current element with the next element</code><br />
+                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
+                        <code>&emsp;&emsp; - If the current element is less than the next element, move to the next element</code><br />
+                        <code>2. Repeat Step 1 until you reach the last index</code><br />
+                        <code>3. If no swaps were made, the list is sorted; otherwise, continue</code><br />
+                        <code>4. Starting at index length(list) - 2, compare the current element with the previous element</code><br />
+                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
+                        <code>&emsp;&emsp; - If the current element is less than the next element, move to the previous element</code><br />
+                        <code>5. Repeat Step 4 until you reach the first index</code><br />
+                        <code>6. Repeat from Step 1 until no swaps are needed in either direction</code>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- ======= Controls Section ======= -->
-    <section id="controls">
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <label for="speed-slider">Speed (ms):</label>
-            <span>50</span>
-            <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
-              oninput="updateDelay(this.value)" />
-            <span>1000</span>
-          </div>
-          <div class="row">
-            <label for="num-elements">Number of Elements:</label>
-            <span>5</span>
-            <input id="num-elements" type="range" min="5" max="50" step="1" value="15" oninput="newSet(this.value)" />
-            <span>50</span>
-          </div>
-        </div>
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
+                            oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15"
+                            oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
 
-        <div class="col">
-          <div class="row">
-            <label for="custom-data">Input your Own Data?</label>
-            <input id="custom-data" type="checkbox"
-              onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
-          </div>
-          <div class="row">
-            <label for="data-input">Enter Data:</label>
-            <input id="data-input" type="text" placeholder="10,42,34,55,..." oninput="updateDataFromInput(this.value);"
-              disabled />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <button id="sort-button" onclick="cocktailShakerSort()" class="btn"> Sort </button>
-        <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
-      </div>
-    </section>
-  </main>
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..."
+                            oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="cocktailShakerSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
 
-  <a href="#" class="back-to-top">
-    <i class="material-icons">arrow_upward</i>
-  </a>
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <!-- External JS Libraries -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-
-  <!-- Custom JS -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const visu = document.querySelector("#visualization-area");
-      visu.setAttribute("width", "100%");
-      visu.setAttribute("height", "370");
-      visu.setAttribute("viewBox", `0 0 ${window.innerWidth} 370`);
-    });
-
-    let isSorting = false;
-    let delay = 200;
-    const svg = d3.select("#visualization-area");
-    const width = window.innerWidth;
-    const height = 370;
-    let data = [];
-    let comparisonCount = 0;
-    let swapCount = 0;
-
-    function updateDelay(newDelay) {
-      delay = newDelay;
-    }
-
-    function newSet(num = 15) {
-      data = Array.from({ length: num }, () => Math.floor(Math.random() * 200) + 1);
-      resetVisualization();
-      drawBars();
-    }
-
-    function stopSort() {
-      isSorting = false;
-      toggleButtons();
-    }
-
-    function updateDataFromInput(inputData = "107,46,59,34,39,22,16,44,4,20,55,24,74,94,95") {
-      data = inputData.split(",").map(Number);
-      if (data.length > 50) {
-        data = data.slice(0, 50);
-      }
-      resetVisualization();
-      drawBars();
-    }
-
-    function resetVisualization() {
-      svg.selectAll("rect").remove();
-      svg.selectAll("text").remove();
-      comparisonCount = 0;
-      swapCount = 0;
-      isSorting = false;
-    }
-
-    function drawBars() {
-      const barWidth = Math.floor(width / data.length);
-      const maxHeight = Math.max(...data);
-      const yScale = d3.scaleLinear().domain([0, maxHeight]).range([0, height - 20]);
-
-      svg.selectAll("rect")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("x", (d, i) => i * barWidth)
-        .attr("y", (d) => height - yScale(d))
-        .attr("width", barWidth - 5)
-        .attr("height", (d) => yScale(d))
-        .attr("class", "bar")
-        .attr("fill", "#CC1616")
-        .attr("id", (d, i) => `rect${i}`);
-
-      svg.selectAll("text")
-        .data(data)
-        .enter()
-        .append("text")
-        .attr("x", (d, i) => i * barWidth + (barWidth - 5) / 2)
-        .attr("y", (d) => height - yScale(d) - 5)
-        .attr("text-anchor", "middle")
-        .attr("class", "bar-text")
-        .attr("fill", "black")
-        .text((d) => d)
-        .attr("id", (d, i) => `text${i}`);
-    }
-
-    // Main sorting function
-    async function cocktailShakerSort() {
-      comparisonCount = 0;
-      swapCount = 0;
-      isSorting = true;
-
-      toggleButtons();
-
-      let start = 0;
-      let end = data.length - 1;
-      let swapped;
-
-      do {
-        swapped = false;
-
-        // Forward pass
-        for (let i = start; i < end; i++) {
-          incrementComparisonCount();
-
-          // Highlight the two bars being compared
-          svg.select(`#rect${i}`).style("fill", "#9DBDC6");
-          svg.select(`#rect${i + 1}`).style("fill", "#9DBDC6");
-
-          await new Promise((resolve) => setTimeout(resolve, delay));
-
-          if (data[i] > data[i + 1]) {
-            incrementSwapCount();
-
-            // Swap data values
-            [data[i], data[i + 1]] = [data[i + 1], data[i]];
-
-            // Animate the swap
-            await animateBars(i);
-
-            swapped = true;
-          }
-
-          // Revert colors after comparison
-          svg.select(`#rect${i}`).style("fill", "#CC1616");
-          svg.select(`#rect${i + 1}`).style("fill", "#CC1616");
-        }
-
-        // Mark the last sorted element as green
-        svg.select(`#rect${end}`).style("fill", "#00FF00");
-
-        // Reduce the range for the next pass
-        end--;
-
-        // Backward pass
-        for (let i = end; i > start; i--) {
-          incrementComparisonCount();
-
-          // Highlight the two bars being compared
-          svg.select(`#rect${i}`).style("fill", "#9DBDC6");
-          svg.select(`#rect${i - 1}`).style("fill", "#9DBDC6");
-
-          await new Promise((resolve) => setTimeout(resolve, delay));
-
-          if (data[i] < data[i - 1]) {
-            incrementSwapCount();
-
-            // Swap data values
-            [data[i], data[i - 1]] = [data[i - 1], data[i]];
-
-            // Animate the swap
-            await animateBars(i, i - 1);
-
-            swapped = true;
-          }
-
-          // Revert colors after comparison
-          svg.select(`#rect${i}`).style("fill", "#CC1616");
-          svg.select(`#rect${i - 1}`).style("fill", "#CC1616");
-        }
-
-        // Mark the first sorted element as green
-        svg.select(`#rect${start}`).style("fill", "#00FF00");
-
-        // Increase the starting index for the next pass
-        start++;
-      } while (swapped && isSorting);
-
-      // Mark all elements as green to indicate sorting is complete
-      for (let i = 0; i < data.length; i++) {
-        svg.select(`#rect${i}`).style("fill", "#00FF00");
-      }
-
-      isSorting = false;
-      toggleButtons();
-    }
-
-    // Function to animate bars and text and swap their IDs
-    async function animateBars(i, j) {
-      const barWidth = Math.floor(width / data.length);
-
-      let bar1 = svg.select(`#rect${i}`);
-      let bar2 = svg.select(`#rect${j}`);
-      let text1 = svg.select(`#text${i}`);
-      let text2 = svg.select(`#text${j}`);
-
-      // Calculate translation distances
-      const calcTransl1 = i * barWidth;
-      const calcTransl2 = j * barWidth;
-
-      // Animate bars
-      bar1
-        .attr("x", calcTransl2)
-        .transition()
-        .duration(delay);
-
-      bar2
-        .attr("x", calcTransl1)
-        .transition()
-        .duration(delay);
-
-      // Animate text
-      text1
-        .attr("x", calcTransl2 + barWidth / 2)
-        .transition()
-        .duration(delay);
-
-      text2
-        .attr("x", calcTransl1 + barWidth / 2)
-        .transition()
-        .duration(delay);
-
-      // Wait for transitions to complete
-      await Promise.all([
-        bar1.transition().end(),
-        bar2.transition().end(),
-        text1.transition().end(),
-        text2.transition().end(),
-      ]);
-
-      // Swap the IDs of the bars and text
-      bar1.attr("id", `rect${j}`);
-      bar2.attr("id", `rect${i}`);
-      text1.attr("id", `text${j}`);
-      text2.attr("id", `text${i}`);
-    }
-
-    // Function to toggle button states
-    function toggleButtons() {
-      document.querySelector("#num-elements").disabled = isSorting;
-      document.querySelector("#data-input").disabled = isSorting;
-      document.querySelector("#custom-data").disabled = isSorting;
-      document.querySelector("#sort-button").disabled = isSorting;
-      document.querySelector("#stop-button").disabled = !isSorting;
-    }
-
-    // Function to increment the comparison count
-    function incrementComparisonCount() {
-      comparisonCount++;
-      document.querySelector("#comparison-count").innerHTML = `No. of comparisons: ${comparisonCount}`;
-    }
-
-    // Function to increment the swap count
-    function incrementSwapCount() {
-      swapCount++;
-      document.querySelector("#swap-count").innerText = `No. of swaps: ${swapCount}`;
-    }
-
-    newSet();
-  </script>
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
 </body>
 
 </html>
