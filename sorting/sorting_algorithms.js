@@ -288,3 +288,60 @@ async function insertionSort() {
     isSorting = false;
     toggleButtons();
 }
+
+async function selectionSort() {
+    comparisonCount = 0;
+    swapCount = 0;
+    isSorting = true;
+    toggleButtons();
+
+    for (let i = 0; i < data.length - 1 && isSorting; i++) {
+        let minIndex = i;
+
+        // Highlight the current bar as the starting point
+        svg.select(`#rect${minIndex}`).style("fill", "#9DBDC6");
+
+        for (let j = i + 1; j < data.length && isSorting; j++) {
+            incrementComparisonCount();
+
+            // Highlight the bar being compared
+            svg.select(`#rect${j}`).style("fill", "#9DBDC6");
+
+            await new Promise((resolve) => setTimeout(resolve, delay));
+
+            if (data[j] < data[minIndex]) {
+                // Revert the color of the previous minIndex bar
+                svg.select(`#rect${minIndex}`).style("fill", "#CC1616");
+
+                // Update the new minimum index
+                minIndex = j;
+
+                // Highlight the new minimum bar
+                svg.select(`#rect${minIndex}`).style("fill", "#FFD700");
+            } else {
+                // Revert the color of the compared bar if it's not the new minimum
+                svg.select(`#rect${j}`).style("fill", "#CC1616");
+            }
+        }
+
+        // Swap if minIndex has changed
+        if (minIndex !== i) {
+            incrementSwapCount();
+
+            // Swap data values
+            [data[i], data[minIndex]] = [data[minIndex], data[i]];
+
+            // Animate the swap
+            await animateBars(i, minIndex);
+        }
+
+        // Mark the sorted element as green
+        svg.select(`#rect${i}`).style("fill", "#00FF00");
+    }
+
+    // Mark the last element as green to indicate sorting is complete
+    svg.select(`#rect${data.length - 1}`).style("fill", "#00FF00");
+
+    isSorting = false;
+    toggleButtons();
+}

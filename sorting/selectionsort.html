@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Selection Sort - AlgoViz</title>
+
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
+    </header>
+
+    <main>
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Selection Sort</li>
+            </ol>
+            <h2>Selection Sort Visualization</h2>
+        </section>
+
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Selection Sort is a simple comparison-based sorting algorithm. It divides the
+                    list into a sorted and an unsorted part. The algorithm repeatedly selects the
+                    smallest (or largest, depending on the order) element from the unsorted part
+                    and swaps it with the first element of the unsorted part, effectively growing
+                    the sorted part of the list one element at a time.
+                    <br /><br />
+                    <b>Time Complexity:</b>
+                    <br />Best case: O(n²) - The algorithm always performs n-1 comparisons for
+                    each element, even if the list is already sorted.
+                    <br />Average case: O(n²) - The number of comparisons remains constant for any
+                    input order, making it inefficient for large datasets.
+                    <br />Worst case: O(n²) - As with the best and
+                    average cases, the number of comparisons is always the same.
+                    <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
+
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code>for i = 0 <span>to</span> length(list) - 1</code><br />
+                        <code>&emsp;&emsp;minIndex = i</code><br />
+                        <code>&emsp;&emsp;<span>for</span> j = i + 1 <span>to</span> length(list) - 1</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[j] < list[minIndex]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;minIndex = j</code><br />
+                        <code>&emsp;&emsp;<span>end for</span></code><br />
+                        <code>&emsp;&emsp;<span>if</span> minIndex ≠ i</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;swap list[i] <span>and</span> list[minIndex]</code><br />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Start from the first element (index 0)</code><br />
+                        <code>2. Find the smallest element in the remaining list</code><br />
+                        <code>3. Swap the smallest element with the first element</code><br />
+                        <code>4. Move to the next element and repeat the process</code><br />
+                        <code>5. Continue until the entire list is sorted</code><br />
+                        <code>6. The algorithm ensures that the left portion of the list is always sorted</code><br />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
+                            oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15"
+                            oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..."
+                            oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="selectionSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
+</body>
+
+</html>
