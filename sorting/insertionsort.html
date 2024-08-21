@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Insertion Sort - AlgoViz</title>
+
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
+    </header>
+
+    <main>
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Insertion Sort</li>
+            </ol>
+            <h2>Insertion Sort Visualization</h2>
+        </section>
+
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Insertion Sort is a simple and intuitive sorting algorithm that builds the final sorted array one
+                    element at a time. It operates by dividing the list into a sorted and an unsorted part. Initially,
+                    the sorted part contains just the first element, and the rest of the list is unsorted. The algorithm
+                    repeatedly picks the next element from the unsorted part and inserts it into the correct position
+                    within the sorted part, shifting elements as necessary.
+                    <br /><br />
+                    <b>Time Complexity:</b>
+                    <br />Best case: O(n) - When the list is already sorted, as no elements need to be moved.
+                    <br />Average case: O(n²) - The number of shifts increases as the list size grows, especially when
+                    elements are randomly ordered.
+                    <br />Worst case: O(n²) - When the array is initially in reverse order, requiring maximum shifting.
+                    <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
+
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code>for i = 1 <span>to</span> length(list) - 1</code><br />
+                        <code>&emsp;&emsp;key = list[i]</code><br />
+                        <code>&emsp;&emsp;j = i - 1</code><br />
+                        <code>&emsp;&emsp;<span>while</span> j >= 0 <span>and</span> list[j] > key</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;list[j + 1] = list[j]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;j -= 1</code><br />
+                        <code>&emsp;&emsp;list[j + 1] = key</code><br />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Start from the second element (index 1)</code><br />
+                        <code>2. The current element is called 'key'</code><br />
+                        <code>3. Compare the key with elements before it</code><br />
+                        <code>4. Shift elements larger than the key to the right</code><br />
+                        <code>5. Insert the key in its correct position</code><br />
+                        <code>6. Repeat this process until the list is sorted</code><br />
+                        <code>7. The algorithm ensures the left portion of the list is always sorted</code><br />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
+                            oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15"
+                            oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..."
+                            oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="insertionSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
+</body>
+
+</html>

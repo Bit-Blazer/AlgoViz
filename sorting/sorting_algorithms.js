@@ -239,3 +239,52 @@ async function gnomeSort() {
     isSorting = false;
     toggleButtons();
 }
+
+async function insertionSort() {
+    comparisonCount = 0;
+    swapCount = 0;
+    isSorting = true;
+
+    toggleButtons();
+
+    for (let i = 1; i < data.length && isSorting; i++) {
+        let key = data[i];
+        let j = i - 1;
+
+        while (j >= 0 && data[j] > key) {
+            incrementComparisonCount();
+
+            // Highlight the bars being compared
+            svg.select(`#rect${j}`).style("fill", "#9DBDC6");
+            svg.select(`#rect${j + 1}`).style("fill", "#9DBDC6");
+
+            await new Promise((resolve) => setTimeout(resolve, delay));
+
+            // Move the element one position to the right
+            data[j + 1] = data[j];
+
+            // Animate the move
+            await animateBars(j, j + 1);
+
+            svg.select(`#rect${j}`).style("fill", "#CC1616");
+            svg.select(`#rect${j + 1}`).style("fill", "#CC1616");
+
+            j--;
+        }
+
+        // Place the current value in the correct position
+        data[j + 1] = key;
+        incrementSwapCount();
+
+        // Update the bar with the final placement
+        drawBars();
+    }
+
+    // Mark all elements as green to indicate sorting is complete
+    for (let i = 0; i < data.length; i++) {
+        svg.select(`#rect${i}`).style("fill", "#00FF00");
+    }
+
+    isSorting = false;
+    toggleButtons();
+}
