@@ -5,35 +5,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Gnome Sort - AlgoViz</title>
-
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <title>Cocktail Shaker Sort - AlgoViz</title>
 
     <!-- Material Icons and Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
 
     <!-- Main CSS File -->
-    <link href="style.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- ======= Header ======= -->
     <header class="header">
-        <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
     </header>
 
     <main>
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
             <ol>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sorting.html">Sorting</a></li>
-                <li>Gnome Sort</li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Cocktail Shaker Sort</li>
             </ol>
-            <h2>Gnome Sort Visualization</h2>
+            <h2>Cocktail Shaker Sort Visualization</h2>
         </section>
 
         <!-- ======= Overview Section ======= -->
@@ -41,18 +37,17 @@
             <div class="section-title">
                 <h2>Overview</h2>
                 <p>
-                    Gnome Sort is a simple sorting algorithm similar to the insertion sort, but it
-                    operates with a concept similar to the way a garden gnome sorts flower pots.
-                    The algorithm works by comparing the current element with the previous one and
-                    swapping them if they are out of order. It then moves one step backward and
-                    repeats the process. If the elements are in order, it moves one step forward.
-                    The process continues until the entire list is sorted.
+                    Cocktail Shaker Sort is a variation of Bubble Sort that sorts in
+                    both directions during each pass through the list. It alternates
+                    between left-to-right and right-to-left passes, which helps to move
+                    both small and large elements into their correct positions more
+                    quickly. This bidirectional approach can reduce the number of passes
+                    needed in some cases.
                     <br /><br />
                     <b>Time Complexity:</b>
-                    <br />Best case: O(n) - When the list is already sorted or nearly sorted
-                    <br />Average case: O(n²) - As the gnome has to backtrack frequently, similar to insertion sort
-                    <br />Worst case: O(n²) - When the array is initially in reverse order, requiring maximum
-                    backtracking
+                    <br />Best case: O(n) - When the array is already sorted
+                    <br />Average case: O(n²) - When the array elements are in random order
+                    <br />Worst case: O(n²) - When the array is in reverse order
                     <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
                 </p>
             </div>
@@ -72,25 +67,35 @@
             <div class="row">
                 <div class="col">
                     <div class="ide">
-                        <code>i = 1</code><br />
-                        <code><span>while</span> i < length(list)</code><br />
-                        <code>&emsp;&emsp;<span>if</span> i == 0 <span>or</span> list[i - 1] ≤ list[i]</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;i += 1</code><br />
-                        <code>&emsp;&emsp;<span>else</span></code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[i], list[i - 1])</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;i -= 1</code><br />
+                        <code>while (swapped)</code><br />
+                        <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+                        <code>&emsp;&emsp;<span>for</span> x = 0 to length(list) - 2</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code><br />
+                        <code>&emsp;&emsp;<span>if</span>(swapped ==<span>false</span>)</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>break</span></code><br />
+                        <code>&emsp;&emsp;swapped = <span>false</span></code><br />
+                        <code>&emsp;&emsp;<span>for</span> x = length(list) - 2 to 0</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[x] > list[x +1]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[x],list[x + 1])</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped =<span>true</span></code>
                     </div>
                 </div>
                 <div class="col">
                     <div class="ide">
                         <code>SHORT EXPLANATION</code><br />
                         <code>------------------</code><br />
-                        <code>1. Start at the first element (index 1) of the list</code><br />
-                        <code>2. If the current element is in the correct order relative to the previous element, move forward</code><br />
-                        <code>3. If the current element is smaller, swap it with the previous one</code><br />
-                        <code>&emsp;&emsp; - Then move one step back to compare the swapped element again</code><br />
-                        <code>4. Continue this process until you reach the end of the list</code><br />
-                        <code>5. The algorithm ensures that smaller elements move toward the beginning and larger ones toward the end, similar to the way a gnome sorts flower pots</code><br />
+                        <code>1. Starting at index 0, compare the current element with the next element</code><br />
+                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
+                        <code>&emsp;&emsp; - If the current element is less than the next element, move to the next element</code><br />
+                        <code>2. Repeat Step 1 until you reach the last index</code><br />
+                        <code>3. If no swaps were made, the list is sorted; otherwise, continue</code><br />
+                        <code>4. Starting at index length(list) - 2, compare the current element with the previous element</code><br />
+                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them</code><br />
+                        <code>&emsp;&emsp; - If the current element is less than the next element, move to the previous element</code><br />
+                        <code>5. Repeat Step 4 until you reach the first index</code><br />
+                        <code>6. Repeat from Step 1 until no swaps are needed in either direction</code>
                     </div>
                 </div>
             </div>
@@ -130,7 +135,7 @@
                 </div>
             </div>
             <div class="row">
-                <button id="sort-button" onclick="gnomeSort()" class="btn"> Sort </button>
+                <button id="sort-button" onclick="cocktailShakerSort()" class="btn"> Sort </button>
                 <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
             </div>
         </section>

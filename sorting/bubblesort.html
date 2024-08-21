@@ -5,35 +5,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Comb Sort - AlgoViz</title>
-
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <title>Bubble Sort - AlgoViz</title>
 
     <!-- Material Icons and Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
 
     <!-- Main CSS File -->
-    <link href="style.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
 </head>
 
 <body>
+
     <!-- ======= Header ======= -->
     <header class="header">
-        <h1 class="header-logo"><a href="index.html">AlgoViz</a></h1>
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
     </header>
 
     <main>
+
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
             <ol>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sorting.html">Sorting</a></li>
-                <li>Comb Sort</li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Bubble Sort</li>
             </ol>
-            <h2>Comb Sort Visualization</h2>
+            <h2>Bubble Sort Visualization</h2>
         </section>
 
         <!-- ======= Overview Section ======= -->
@@ -41,19 +39,17 @@
             <div class="section-title">
                 <h2>Overview</h2>
                 <p>
-                    Comb Sort is an improvement over Bubble Sort that addresses the problem of
-                    turtles, or small values near the end of the list, which slow down the sorting
-                    process. Comb Sort works by initially comparing elements that are far apart,
-                    and gradually reducing the gap between elements to be compared as the
-                    algorithm proceeds. The idea is to eliminate turtles early on and make the
-                    list closer to being sorted before resorting to the traditional Bubble Sort
-                    approach with a gap of 1.
+                    Bubble Sort is a simple comparison-based sorting algorithm. In this
+                    algorithm, each pair of adjacent elements is compared, and the
+                    elements are swapped if they are in the wrong order. This process is
+                    repeated until the list is sorted.
                     <br /><br />
-                    <b>Time Complexity:</b>
-                    <br />Best case: O(n log n) - When the gap reduction efficiently eliminates inversions
-                    <br />Average case: O(n log n) - Similar to the best case, as the gap shrinks efficiently
-                    <br />Worst case: O(n²) - Similar to Bubble Sort when the array is initially in reverse order
-                    <br /><b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                    <b>Time Complexity: </b>
+                    <br />Best case: O(n) - When the array is already sorted
+                    <br />Average case: O(n²) - When the array elements are in random order
+                    <br />Worst case: O(n²) - When the array is in reverse order
+                    <br />
+                    <b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
                 </p>
             </div>
         </section>
@@ -72,33 +68,25 @@
             <div class="row">
                 <div class="col">
                     <div class="ide">
-                        <code>gap = length(list)</code><br />
-                        <code>shrinkFactor = 1.3</code><br />
-                        <code>swapped = <span>true</span></code><br />
-                        <code><span>while</span> (gap > 1 <span>or</span> swapped)</code><br />
-                        <code>&emsp;&emsp;gap = <span>max</span>(1, <span>floor</span>(gap / shrinkFactor))</code><br />
-                        <code>&emsp;&emsp;swapped = <span>false</span></code><br />
-                        <code>&emsp;&emsp;<span>for</span> i = 0 <span>to</span> length(list) - gap</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> list[i] > list[i + gap]</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>swap</span>(list[i], list[i + gap])</code><br />
-                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swapped = <span>true</span></code><br />
+                        <code>for i = 0 to length(list) - 1</code><br />
+                        <code>&emsp;&emsp;for j = 0 to length(list) - i - 1</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;if list[j] > list[j + 1]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(list[j], list[j + 1])</code>
                     </div>
                 </div>
                 <div class="col">
                     <div class="ide">
                         <code>SHORT EXPLANATION</code><br />
                         <code>------------------</code><br />
-                        <code>1. Set the initial gap size to the length of the list</code><br />
-                        <code>2. Reduce the gap size by dividing it by a shrink factor (typically 1.3)</code><br />
-                        <code>3. Compare each element with the element at the current gap distance</code><br />
-                        <code>&emsp;&emsp; - If the element is greater, swap them</code><br />
-                        <code>4. Continue the process, reducing the gap and performing swaps, until the gap is 1 and no swaps are needed, indicating the list is sorted</code><br />
-                        <code>5. The last pass is effectively a Bubble Sort with gap = 1</code><br />
+                        <code>1. Start with the first element and compare it with the next one.</code><br />
+                        <code>&emsp;&emsp; - If the current element is greater than the next element, swap them.</code><br />
+                        <code>2. Move to the next element and repeat the comparison.</code><br />
+                        <code>3. After each pass, the largest element in the unsorted portion is moved to its correct position.</code><br />
+                        <code>4. Continue this process until the entire list is sorted.</code>
                     </div>
                 </div>
             </div>
         </section>
-
 
         <!-- ======= Controls Section ======= -->
         <section id="controls">
@@ -134,7 +122,7 @@
                 </div>
             </div>
             <div class="row">
-                <button id="sort-button" onclick="combSort()" class="btn"> Sort </button>
+                <button id="sort-button" onclick="bubbleSort()" class="btn"> Sort </button>
                 <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
             </div>
         </section>
