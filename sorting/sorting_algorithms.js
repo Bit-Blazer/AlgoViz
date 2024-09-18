@@ -345,3 +345,11 @@ async function selectionSort() {
     isSorting = false;
     toggleButtons();
 }
+
+// TODO: Implement bogoSort, countingSort, radixSort
+
+async function bogoSort() { }
+
+async function countingSort() { }
+
+async function radixSort() { }

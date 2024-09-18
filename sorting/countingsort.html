@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Counting Sort - AlgoViz</title>
+
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
+    </header>
+
+    <main>
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Counting Sort</li>
+            </ol>
+            <h2>Counting Sort Visualization</h2>
+        </section>
+
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Counting Sort is a non-comparison-based sorting algorithm. It works by counting the number of occurrences of each distinct element
+                    in the input, and then using this information to place each element in its correct position in the sorted array.
+                    <br /><br />
+                    <b>Time Complexity: </b>
+                    <br />Best case: O(n + k) - Where 'n' is the number of elements and 'k' is the range of the input.
+                    <br />Average case: O(n + k) - It is unaffected by the initial order of elements.
+                    <br />Worst case: O(n + k) - The algorithm performs the same regardless of the input distribution.
+                    <br />
+                    <b>Space Complexity:</b> O(n + k) - Extra space is required to store the count array and the output array.
+                    <br /><br />
+                    Counting Sort is efficient for sorting integers or objects with integer keys, and it is often used when the range of input values
+                    is not significantly larger than the number of elements to be sorted.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
+
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code>let max = findMax(list)</code><br />
+                        <code>let count = new Array(max + 1).fill(0)</code><br />
+                        <code>for i = 0 to length(list) - 1</code><br />
+                        <code>&emsp;&emsp;count[list[i]]++</code><br />
+                        <code>for i = 1 to max</code><br />
+                        <code>&emsp;&emsp;count[i] += count[i - 1]</code><br />
+                        <code>for i = length(list) - 1 to 0</code><br />
+                        <code>&emsp;&emsp;output[count[list[i]] - 1] = list[i]</code><br />
+                        <code>&emsp;&emsp;count[list[i]]--</code><br />
+                        <code>for i = 0 to length(output) - 1</code><br />
+                        <code>&emsp;&emsp;list[i] = output[i]</code>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Find the maximum value in the list to determine the range.</code><br />
+                        <code>2. Create a count array to store the frequency of each element.</code><br />
+                        <code>3. Modify the count array such that each element at index i holds the sum of the counts up to i.</code><br />
+                        <code>4. Place the elements in the output array by using the count array to determine their positions.</code><br />
+                        <code>5. Copy the sorted elements back into the original list.</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200" oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15" oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..." oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="countingSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
+</body>
+
+</html>

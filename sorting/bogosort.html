@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bogo Sort - AlgoViz</title>
+
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
+    </header>
+
+    <main>
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Bogo Sort</li>
+            </ol>
+            <h2>Bogo Sort Visualization</h2>
+        </section>
+
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Bogo Sort is a highly inefficient sorting algorithm based on the generate-and-test paradigm.
+                    It repeatedly shuffles the array randomly until it finds a sorted arrangement.
+                    <br /><br />
+                    <b>Time Complexity: </b>
+                    <br />Best case: O(n) - When the array is already sorted (highly unlikely)
+                    <br />Average case: O((n+1)!) - The expected number of permutations is factorial in size
+                    <br />Worst case: Unbounded - It can theoretically run forever if unlucky with shuffles
+                    <br />
+                    <b>Space Complexity:</b> O(1) - It is an in-place sorting algorithm.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
+
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code>while not isSorted(list)</code><br />
+                        <code>&emsp;&emsp;shuffle(list)</code><br />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Check if the list is sorted.</code><br />
+                        <code>&emsp;&emsp; - If the list is sorted, the algorithm is complete.</code><br />
+                        <code>2. If the list is not sorted, shuffle the entire list randomly.</code><br />
+                        <code>3. Repeat the process until the list becomes sorted.</code><br />
+                        <code>4. Since shuffling is random, this sort can take an unpredictable amount of time.</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200" oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15" oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..." oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="bogoSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
+</body>
+
+</html>

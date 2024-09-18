@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Merge Sort - AlgoViz</title>
+
+    <!-- Material Icons and Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header class="header">
+        <h1 class="header-logo"><a href="../index.html">AlgoViz</a></h1>
+    </header>
+
+    <main>
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <ol>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sorting.html">Sorting</a></li>
+                <li>Merge Sort</li>
+            </ol>
+            <h2>Merge Sort Visualization</h2>
+        </section>
+
+        <!-- ======= Overview Section ======= -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>Overview</h2>
+                <p>
+                    Merge Sort is a highly efficient, stable, and comparison-based sorting algorithm. It operates by
+                    dividing the unsorted list into smaller sublists until each sublist consists of a single element
+                    (which is trivially sorted). The algorithm then merges these sublists back together in the correct
+                    order to form the sorted list. This divide-and-conquer approach ensures that the list is sorted in a
+                    predictable and efficient manner.
+                    <br /><br />
+                    <b>Time Complexity:</b>
+                    <br />Best case: O(n log n) - The time complexity remains O(n log n) in all cases because the list
+                    is always divided in half and merged.
+                    <br />Average case: O(n log n) - The number of comparisons and merging steps remains consistent for
+                    any input order.
+                    <br />Worst case: O(n log n) - The time complexity does not degrade for worst-case scenarios.
+                    <br /><b>Space Complexity:</b> O(n) - It requires additional space to store the sublists, making it
+                    less space-efficient than in-place algorithms.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ======= Visualization Section ======= -->
+        <section id="visualization">
+            <div class="counters">
+                <span id="comparison-count">No. of comparisons: 0</span>
+                <span id="swap-count">No. of swaps: 0</span>
+            </div>
+            <svg id="visualization-area"></svg>
+        </section>
+
+        <!-- ======= Code and Explanation Section ======= -->
+        <section id="code">
+            <div class="row">
+                <div class="col">
+                    <div class="ide">
+                        <code><span>function</span> mergeSort(list)</code><br />
+                        <code>&emsp;&emsp;<span>if</span> length(list) <= 1 <span>return</span> list</code><br />
+                        <code>&emsp;&emsp;mid = length(list) <span>div</span> 2</code><br />
+                        <code>&emsp;&emsp;leftHalf = mergeSort(list[0:mid])</code><br />
+                        <code>&emsp;&emsp;rightHalf = mergeSort(list[mid:end])</code><br />
+                        <code>&emsp;&emsp;<span>return</span> merge(leftHalf, rightHalf)</code><br />
+                        <br />
+                        <code><span>function</span> merge(left, right)</code><br />
+                        <code>&emsp;&emsp;result = []</code><br />
+                        <code>&emsp;&emsp;<span>while</span> left <span>and</span> right are not empty</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>if</span> left[0] < right[0]</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;append left[0] to result</code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;<span>else</span></code><br />
+                        <code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;append right[0] to result</code><br />
+                        <code>&emsp;&emsp;<span>end while</span></code><br />
+                        <code>&emsp;&emsp;<span>return</span> result + remaining elements from left + right</code><br />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ide">
+                        <code>SHORT EXPLANATION</code><br />
+                        <code>------------------</code><br />
+                        <code>1. Divide the list into two halves</code><br />
+                        <code>2. Recursively sort both halves</code><br />
+                        <code>3. Merge the two sorted halves</code><br />
+                        <code>4. During merging, compare the first elements of both halves</code><br />
+                        <code>5. Append the smaller element to the result list</code><br />
+                        <code>6. Continue merging until the entire list is sorted</code><br />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======= Controls Section ======= -->
+        <section id="controls">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <label for="speed-slider">Speed (ms):</label>
+                        <span>50</span>
+                        <input id="speed-slider" type="range" min="50" max="1000" step="50" value="200"
+                            oninput="updateDelay(this.value)" />
+                        <span>1000</span>
+                    </div>
+                    <div class="row">
+                        <label for="num-elements">Number of Elements:</label>
+                        <span>5</span>
+                        <input id="num-elements" type="range" min="5" max="50" step="1" value="15"
+                            oninput="newSet(this.value)" />
+                        <span>50</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="custom-data">Input your Own Data?</label>
+                        <input id="custom-data" type="checkbox"
+                            onchange="document.querySelector('#data-input').disabled = !this.checked;document.querySelector('#num-elements').disabled = this.checked;" />
+                    </div>
+                    <div class="row">
+                        <label for="data-input">Enter Data:</label>
+                        <input id="data-input" type="text" placeholder="10,42,34,55,..."
+                            oninput="updateDataFromInput(this.value);" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="sort-button" onclick="mergeSort()" class="btn"> Sort </button>
+                <button id="stop-button" onclick="stopSort()" class="btn"> Stop </button>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    <!-- External JS Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="sorting_main.js"></script>
+    <script src="sorting_algorithms.js"></script>
+</body>
+
+</html>
